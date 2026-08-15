@@ -1,0 +1,7 @@
+/* MissExplica — progresso do aluno. */
+(function(){
+ async function get(courseId){const sb=window.missExplicaSupabase;const {data:user}=await sb.auth.getUser();if(!user.user)throw new Error('Faça login novamente.');const {data,error}=await sb.from('lesson_progress').select('lesson_id,completed_at,lessons!inner(id,module_id)').eq('student_id',user.user.id);if(error)throw error;const {data:mods,error:me}=await sb.from('modules').select('id,course_id,lessons(id,published)').eq('course_id',courseId);if(me)throw me;const lessons=(mods||[]).flatMap(m=>m.lessons||[]).filter(l=>l.published);const done=new Set((data||[]).filter(p=>lessons.some(l=>l.id===p.lesson_id)).map(p=>p.lesson_id));return{total:lessons.length,completed:done.size,percent:lessons.length?Math.round(done.size/lessons.length*100):0,completedIds:[...done]}}
+ async function complete(lessonId){const sb=window.missExplicaSupabase;const {data:user}=await sb.auth.getUser();if(!user.user)throw new Error('Faça login novamente.');const {error}=await sb.from('lesson_progress').upsert({student_id:user.user.id,lesson_id:lessonId},{onConflict:'student_id,lesson_id'});if(error)throw error;return true}
+ function render(root,p){root.innerHTML=`<div class="progress-card"><div><span>Seu progresso</span><strong>${p.percent}%</strong></div><div class="progress-track"><i style="width:${p.percent}%"></i></div><small>${p.completed} de ${p.total} aulas concluídas</small></div>`}
+ window.MissExplicaStudentProgress={get,complete,render};
+})();
