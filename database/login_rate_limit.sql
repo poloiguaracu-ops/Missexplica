@@ -21,4 +21,5 @@ begin
   return true;
 end; $$;
 
+revoke all on function public.check_login_rate_limit(text,text,integer,integer) from public,anon,authenticated;
 grant execute on function public.check_login_rate_limit(text,text,integer,integer) to service_role;
