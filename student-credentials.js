@@ -1,9 +1,35 @@
-/* MissExplica — login real do aluno por CPF + RU. */
+/* MissExplica — login do aluno por CPF ou RU + senha. */
 (function(){
  const $=id=>document.getElementById(id);
  const cleanCpf=v=>String(v||'').replace(/\D/g,'').slice(0,11);
- const formatCpf=v=>{const d=cleanCpf(v);if(d.length<=3)return d;if(d.length<=6)return d.slice(0,3)+'.'+d.slice(3);if(d.length<=9)return d.slice(0,3)+'.'+d.slice(3,6)+'.'+d.slice(6);return d.slice(0,3)+'.'+d.slice(3,6)+'.'+d.slice(6,9)+'-'+d.slice(9)};
+ const looksCpf=v=>cleanCpf(v).length===11;
+ const normalizeIdentifier=v=>{const raw=String(v||'').trim();return /^MX\d{6,}$/i.test(raw)?raw.toUpperCase():cleanCpf(raw)};
  function message(text,error=true){const el=$('studentLoginMessage');if(!el)return;el.innerHTML=`<strong>${error?'Não foi possível entrar':'Acesso liberado'}</strong><span>${text}</span>`;el.classList.remove('hidden')}
- function mount(){const form=$('studentRuLoginForm');if(!form)return;const cpf=$('studentCpf'),ru=$('studentRu'),btn=form.querySelector('button[type="submit"]');cpf?.addEventListener('input',()=>cpf.value=formatCpf(cpf.value));form.addEventListener('submit',async e=>{e.preventDefault();const cpfValue=cleanCpf(cpf.value),ruValue=String(ru.value||'').trim().toUpperCase();if(cpfValue.length!==11||!/^MX\d{6,}$/.test(ruValue)){message('Informe um CPF válido e um RU no formato MX000001.');return}btn.disabled=true;btn.textContent='Validando...';const cfg=window.MISSEXPLICA_SUPABASE;if(!cfg?.url||!cfg?.anonKey){message('O serviço de autenticação ainda não foi configurado.');btn.disabled=false;btn.textContent='Entrar no AVA';return}try{const r=await fetch(`${cfg.url}/functions/v1/student-login`,{method:'POST',headers:{'Content-Type':'application/json','apikey':cfg.anonKey},body:JSON.stringify({cpf:cpfValue,ru:ruValue})});const data=await r.json();if(!r.ok||!data.action_link)throw new Error(data.error||'CPF ou RU inválidos.');localStorage.removeItem('missexplica_auth');localStorage.setItem('missexplica_ru',data.ru||ruValue);localStorage.setItem('missexplica_name',data.name||'Aluno');window.location.assign(data.action_link)}catch(err){message(err.message||'CPF ou RU inválidos.');btn.disabled=false;btn.textContent='Entrar no AVA'}})}
+ function mount(){
+  const form=$('studentRuLoginForm');if(!form)return;
+  const identifier=$('studentIdentifier'),password=$('studentPassword'),btn=form.querySelector('button[type="submit"]'),toggle=$('toggleStudentPassword');
+  toggle?.addEventListener('click',()=>{const visible=password.type==='text';password.type=visible?'password':'text';toggle.textContent=visible?'Mostrar':'Ocultar'});
+  identifier?.addEventListener('input',()=>{const v=identifier.value.trim();if(!/^MX\d{6,}$/i.test(v)&&/^[0-9.\-\s]+$/.test(v))identifier.value=v.replace(/\D/g,'').slice(0,11)});
+  form.addEventListener('submit',async e=>{
+   e.preventDefault();
+   const rawIdentifier=identifier.value.trim(),identifierValue=normalizeIdentifier(rawIdentifier),passwordValue=password.value;
+   const valid=(looksCpf(rawIdentifier)||/^MX\d{6,}$/.test(identifierValue));
+   if(!valid||passwordValue.length<1){message('Informe seu CPF ou RU e sua senha.');return}
+   btn.disabled=true;btn.textContent='Entrando...';
+   const cfg=window.MISSEXPLICA_SUPABASE;
+   if(!cfg?.url||!cfg?.anonKey||cfg.url.includes('SEU-PROJETO')||cfg.anonKey.includes('SUA_ANON')){message('O serviço de autenticação ainda não foi configurado.');btn.disabled=false;btn.textContent='Entrar no AVA';return}
+   try{
+    const r=await fetch(`${cfg.url}/functions/v1/student-login`,{method:'POST',headers:{'Content-Type':'application/json','apikey':cfg.anonKey},body:JSON.stringify({identifier:identifierValue,password:passwordValue})});
+    const data=await r.json();
+    if(!r.ok||!data.session?.access_token||!data.session?.refresh_token)throw new Error(data.error||'CPF/RU ou senha inválidos.');
+    const client=window.missexplicaSupabase;
+    if(!client)throw new Error('Sessão não configurada.');
+    const {error:sessionError}=await client.auth.setSession({access_token:data.session.access_token,refresh_token:data.session.refresh_token});
+    if(sessionError)throw sessionError;
+    localStorage.setItem('missexplica_ru',data.ru||'');localStorage.setItem('missexplica_name',data.name||'Aluno');
+    message('Login realizado. Abrindo seu ambiente de estudos...',false);
+   }catch(err){message(err.message||'CPF/RU ou senha inválidos.');btn.disabled=false;btn.textContent='Entrar no AVA'}
+  });
+ }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
 })();
