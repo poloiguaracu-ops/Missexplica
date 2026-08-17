@@ -1,0 +1,23 @@
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+const cors={
+  'Access-Control-Allow-Origin':'*',
+  'Access-Control-Allow-Headers':'authorization, x-client-info, apikey, content-type',
+  'Access-Control-Allow-Methods':'POST, OPTIONS'
+};
+
+Deno.serve(async req=>{
+  if(req.method==='OPTIONS') return new Response('ok',{headers:cors});
+  try{
+    const {cpf,ru}=await req.json();
+    const cpfDigits=String(cpf||'').replace(/\D/g,'');
+    const ruValue=String(ru||'').trim().toUpperCase();
+    if(cpfDigits.length!==11||!/^MX\d{6,}$/.test(ruValue)) throw new Error('Credenciais inválidas.');
+    const admin=createClient(Deno.env.get('SUPABASE_URL')!,Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!);
+    const {data:profile,error}=await admin.from('profiles').select('id,email,full_name,role,active,cpf,ru').eq('cpf',cpfDigits).eq('ru',ruValue).maybeSingle();
+    if(error||!profile||profile.role!=='student'||profile.active!==true||!profile.email) throw new Error('Credenciais inválidas.');
+    return new Response(JSON.stringify({email:profile.email,name:profile.full_name}),{status:200,headers:{...cors,'Content-Type':'application/json'}});
+  }catch(e){
+    return new Response(JSON.stringify({error:'CPF ou RU inválidos.'}),{status:401,headers:{...cors,'Content-Type':'application/json'}});
+  }
+});
