@@ -11,8 +11,9 @@ Deno.serve(async req=>{
   const caller=createClient(base,anon,{global:{headers:{Authorization:auth}}});const {data:{user:callerUser}}=await caller.auth.getUser();if(!callerUser)throw new Error('Não autenticado.');
   const admin=createClient(base,adminKey);const {data:manager}=await admin.from('profiles').select('role,active').eq('id',callerUser.id).maybeSingle();if(!manager||manager.role!=='manager'||manager.active!==true)throw new Error('Apenas gestores podem liberar acesso.');
   const {studentId,password}=await req.json();if(!studentId)throw new Error('Aluno inválido.');const passwordValue=String(password||'');if(passwordValue.length<8)throw new Error('A senha deve ter pelo menos 8 caracteres.');
-  const {data:profile,error:pe}=await admin.from('profiles').select('id,email,full_name,cpf,ru,role,active').eq('id',studentId).maybeSingle();if(pe||!profile||profile.role!=='student'||profile.active!==true||!profile.email||!profile.ru||!profile.cpf)throw new Error('Aluno sem cadastro completo.');
+  const {data:profile,error:pe}=await admin.from('profiles').select('id,full_name,cpf,ru,role,active').eq('id',studentId).maybeSingle();if(pe||!profile||profile.role!=='student'||profile.active!==true||!profile.ru||!profile.cpf)throw new Error('Aluno sem cadastro completo.');
+  const {data:authUser,error:authUserError}=await admin.auth.admin.getUserById(profile.id);if(authUserError||!authUser?.user?.email)throw new Error('Aluno sem e-mail de autenticação.');
   const {error:ue}=await admin.auth.admin.updateUserById(profile.id,{password:passwordValue,email_confirm:true,user_metadata:{full_name:profile.full_name,ru:profile.ru}});if(ue)throw ue;
-  return new Response(JSON.stringify({ok:true,ru:profile.ru,cpf:profile.cpf,email:profile.email,name:profile.full_name,login:'CPF ou RU + senha'}),{status:200,headers:{...cors,'Content-Type':'application/json'}});
+  return new Response(JSON.stringify({ok:true,ru:profile.ru,cpf:profile.cpf,email:authUser.user.email,name:profile.full_name,login:'CPF ou RU + senha'}),{status:200,headers:{...cors,'Content-Type':'application/json'}});
  }catch(e){return new Response(JSON.stringify({error:e instanceof Error?e.message:'Não foi possível liberar o acesso.'}),{status:400,headers:{...cors,'Content-Type':'application/json'}});}
 });
