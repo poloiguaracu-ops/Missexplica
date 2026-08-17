@@ -23,11 +23,16 @@ Deno.serve(async req=>{
   const {studentId}=await req.json();
   if(!studentId) throw new Error('Aluno inválido.');
   const {data:profile,error:pe}=await admin.from('profiles').select('id,email,full_name,cpf,ru,role,active').eq('id',studentId).maybeSingle();
-  if(pe||!profile||profile.role!=='student'||profile.active!==true||!profile.email||!profile.ru) throw new Error('Aluno sem cadastro completo.');
-  const password=profile.ru;
-  const {error:ue}=await admin.auth.admin.updateUserById(profile.id,{password,email_confirm:true,user_metadata:{full_name:profile.full_name,ru:profile.ru}});
-  if(ue) throw ue;
-  return new Response(JSON.stringify({ok:true,ru:profile.ru,email:profile.email,name:profile.full_name}),{status:200,headers:{...cors,'Content-Type':'application/json'}});
+  if(pe||!profile||profile.role!=='student'||profile.active!==true||!profile.email||!profile.ru||!profile.cpf) throw new Error('Aluno sem cadastro completo.');
+
+  return new Response(JSON.stringify({
+   ok:true,
+   ru:profile.ru,
+   cpf:profile.cpf,
+   email:profile.email,
+   name:profile.full_name,
+   login:'CPF + RU'
+  }),{status:200,headers:{...cors,'Content-Type':'application/json'}});
  }catch(e){
   return new Response(JSON.stringify({error:e?.message||'Não foi possível liberar o acesso.'}),{status:400,headers:{...cors,'Content-Type':'application/json'}});
  }
