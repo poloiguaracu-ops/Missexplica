@@ -9,28 +9,34 @@ O AVA usa PostgreSQL/Supabase para autenticação, cursos, matrículas, aulas e 
 3. Execute `rls_hardening.sql`.
 4. Execute `production_repair.sql`.
 5. Execute `lesson_progress_canonical.sql` para consolidar o progresso e criar `student_complete_lesson`.
-6. Execute `login_rate_limit.sql` para proteção contra tentativas repetidas no login CPF + RU.
+6. Execute `login_rate_limit.sql` para proteção contra tentativas repetidas no login.
 7. Configure o Storage conforme as políticas do projeto.
 8. Faça o deploy de `supabase/functions/student-login`.
-9. Configure na Edge Function os secrets `SUPABASE_SERVICE_ROLE_KEY`, `ALLOWED_ORIGINS` e `STUDENT_LOGIN_REDIRECT`.
+9. Configure na Edge Function os secrets `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY` e `ALLOWED_ORIGINS`.
 10. Configure `supabase-config.js` somente com Project URL e chave anon/public.
 11. Nunca coloque `service_role` no navegador, no GitHub ou em HTML/JavaScript público.
 
-## CORS do login
+## Login do aluno
 
-`ALLOWED_ORIGINS` deve conter somente as origens oficiais do AVA, separadas por vírgula. Exemplo:
+O aluno pode entrar de duas formas equivalentes:
 
-`https://ava.exemplo.com,https://www.exemplo.com`
+`CPF + senha`
 
-Não use `*` em produção.
+ou
+
+`RU + senha`
+
+A Edge Function encontra o aluno pelo CPF ou pelo RU e valida a senha pela autenticação do Supabase. Depois da sessão criada, o aluno entra diretamente no AVA e só enxerga as matrículas liberadas para seu perfil.
+
+A senha deve ser definida no provisionamento administrativo do aluno pela Edge Function `supabase/functions/provision-student` e deve ter pelo menos 8 caracteres.
+
+## CORS
+
+`ALLOWED_ORIGINS` deve conter somente as origens oficiais do AVA, separadas por vírgula. Não use `*` em produção.
 
 ## Identidade acadêmica
 
 Cada aluno possui um RU único da MissExplica, independente do curso. O RU é identificador interno e não substitui RA ou outro registro oficial da instituição parceira.
-
-Fluxo:
-
-`CPF + RU → validação → sessão Supabase → AVA → somente matrículas liberadas`
 
 A função `issue_student_ru` é o gerador oficial. A função `manager_enroll_student` garante que o aluno tenha RU e libera a matrícula.
 
@@ -49,13 +55,13 @@ A função `issue_student_ru` é o gerador oficial. A função `manager_enroll_s
 
 ## Progresso
 
-O modelo canônico de `lesson_progress` usa `completed`, `completed_at`, `watched_seconds` e `updated_at`. A função `student_complete_lesson(uuid)` valida a matrícula e grava a conclusão de forma transacional.
+O modelo canônico de `lesson_progress` usa `completed`, `completed_at`, `watched_seconds` e `updated_at`. A função `student_complete_lesson(uuid)` valida a matrícula e grava a conclusão.
 
 `database/lesson_progress.sql` é apenas compatibilidade. O arquivo oficial é `database/lesson_progress_canonical.sql`.
 
 ## Rate limiting
 
-`login_rate_limit.sql` limita a 8 tentativas por combinação de CPF e endereço IP em uma janela de 15 minutos. Os identificadores armazenados são hashes, não o CPF/IP em texto puro.
+`login_rate_limit.sql` limita a 8 tentativas por combinação de identificador e endereço IP em uma janela de 15 minutos. Os identificadores armazenados são hashes.
 
 ## Regra de acesso
 
