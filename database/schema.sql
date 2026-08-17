@@ -78,28 +78,24 @@ alter table public.live_classes enable row level security;
 alter table public.messages enable row level security;
 alter table public.certificates enable row level security;
 
--- Policies are recreated safely so this migration can be rerun.
 do $$
 begin
   drop policy if exists "profile self read" on public.profiles;
   create policy "profile self read" on public.profiles for select using (auth.uid() = id);
-  drop policy if exists "profile self update" on public.profiles;
-  create policy "profile self update" on public.profiles for update using (auth.uid() = id);
+  -- Não existe UPDATE direto pelo aluno. Campos sensíveis (role, active, cpf, ru)
+  -- só podem ser alterados por Edge Functions/backend com service_role.
 
+  drop policy if exists "profile self update" on public.profiles;
   drop policy if exists "published courses read" on public.courses;
   create policy "published courses read" on public.courses for select using (published = true or created_by = auth.uid());
-
   drop policy if exists "student own enrollments" on public.enrollments;
   create policy "student own enrollments" on public.enrollments for select using (student_id = auth.uid());
-
   drop policy if exists "student own progress" on public.lesson_progress;
   create policy "student own progress" on public.lesson_progress for all using (student_id = auth.uid()) with check (student_id = auth.uid());
-
   drop policy if exists "student own certificates" on public.certificates;
   create policy "student own certificates" on public.certificates for select using (student_id = auth.uid());
-
   drop policy if exists "messages sender recipient" on public.messages;
   create policy "messages sender recipient" on public.messages for select using (sender_id = auth.uid() or recipient_id = auth.uid());
 end $$;
 
--- Operações administrativas devem passar por Edge Functions/backend com service role.
+-- Operações administrativas devem passar por Edge Functions/backend.
