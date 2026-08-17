@@ -1,5 +1,5 @@
 /* MissExplica — restaura e observa somente a sessão Supabase.
-   O login do aluno é exclusivamente CPF + RU, tratado por student-credentials.js. */
+   O login do aluno é exclusivamente CPF ou RU + senha, tratado por student-credentials.js. */
 (function(){
   const cfg=window.MISSEXPLICA_SUPABASE;
   const configured=!!(cfg?.url&&cfg?.anonKey&&!cfg.url.includes('SEU-PROJETO')&&!cfg.anonKey.includes('SUA_ANON'));
