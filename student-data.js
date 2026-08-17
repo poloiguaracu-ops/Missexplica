@@ -1,27 +1,27 @@
-/* MissExplica — dados reais do aluno. Não substitui as regras RLS do banco. */
+/* MissExplica — fonte única de dados reais do aluno. */
 (function(){
-  const cfg=window.MISSEXPLICA_SUPABASE;
-  const configured=cfg && cfg.url && cfg.anonKey && !cfg.url.includes('SEU-PROJETO') && !cfg.anonKey.includes('SUA_ANON');
-  if(!configured)return;
-  const load=()=>{
-    const client=window.missexplicaSupabase;
-    if(!client)return setTimeout(load,500);
-    client.auth.getUser().then(async({data,error})=>{
-      if(error||!data.user)return;
-      const uid=data.user.id;
-      const {data:rows,error:enrollmentError}=await client.from('enrollments').select('id,course_id,status,courses(id,title,description,workload_hours)').eq('student_id',uid).in('status',['active','completed']);
-      if(enrollmentError){console.error('[MissExplica] matrículas:',enrollmentError);return}
-      const ids=(rows||[]).map(r=>r.course_id).filter(Boolean);
-      let lessons=[];
-      if(ids.length){const r=await client.from('lessons').select('id,module_id,title,published,modules!inner(course_id)').in('modules.course_id',ids);if(!r.error)lessons=r.data||[]}
-      const lessonIds=lessons.filter(x=>x.published).map(x=>x.id);
-      let progress=[];
-      if(lessonIds.length){const r=await client.from('lesson_progress').select('lesson_id,completed,completed_at').eq('student_id',uid).in('lesson_id',lessonIds);if(!r.error)progress=r.data||[]}
-      const done=new Set(progress.filter(x=>x.completed).map(x=>x.lesson_id));
-      const model=(rows||[]).map(r=>{const ls=lessons.filter(l=>l.published&&l.modules?.course_id===r.course_id);const d=ls.filter(l=>done.has(l.id)).length;return {id:r.course_id,name:r.courses?.title||'Curso',meta:`Curso Livre • ${r.courses?.workload_hours||0} horas`,lessons:ls.length,done:d,progress:ls.length?Math.round(d/ls.length*100):0};});
-      localStorage.setItem('missexplica_real_courses',JSON.stringify(model));
-      window.dispatchEvent(new CustomEvent('missexplica:data-ready',{detail:model}));
-    });
-  };
-  window.addEventListener('missexplica:auth-ready',load);setTimeout(load,700);
+ const cfg=window.MISSEXPLICA_SUPABASE;
+ const configured=cfg&&cfg.url&&cfg.anonKey&&!cfg.url.includes('SEU-PROJETO')&&!cfg.anonKey.includes('SUA_ANON');
+ async function load(){
+  const client=window.missexplicaSupabase;if(!client)return null;
+  const {data:{user},error:authError}=await client.auth.getUser();
+  if(authError||!user)return null;
+  const result=await client.from('enrollments').select('id,status,course_id,courses(id,title,description,workload_hours,modules(id,title,position,lessons(id,title,description,position,published,duration_minutes)))').eq('student_id',user.id).in('status',['active','completed']);
+  if(result.error)throw result.error;
+  const items=[];
+  for(const enrollment of result.data||[]){
+   const course=enrollment.courses||{};const modules=(course.modules||[]).sort((a,b)=>(a.position||0)-(b.position||0));
+   const lessons=modules.flatMap(m=>m.lessons||[]).filter(l=>l.published);const ids=lessons.map(l=>l.id);
+   let progress=[];if(ids.length){const p=await client.from('lesson_progress').select('lesson_id,completed,completed_at,watched_seconds').eq('student_id',user.id).in('lesson_id',ids);if(p.error)throw p.error;progress=p.data||[]}
+   const done=new Set(progress.filter(p=>p.completed).map(p=>p.lesson_id));
+   const hydrated=modules.map(m=>({...m,lessons:(m.lessons||[]).map(l=>({...l,completed:done.has(l.id),progress:progress.find(p=>p.lesson_id===l.id)||null}))}));
+   const nextLesson=lessons.find(l=>!done.has(l.id))||lessons[lessons.length-1]||null;
+   items.push({enrollmentId:enrollment.id,status:enrollment.status,id:course.id,name:course.title||'Curso',description:course.description||'',workloadHours:course.workload_hours||0,modules:hydrated,lessons:lessons.length,done:done.size,progress:lessons.length?Math.round(done.size/lessons.length*100):0,nextLesson});
+  }
+  localStorage.setItem('missexplica_real_courses',JSON.stringify(items));
+  window.dispatchEvent(new CustomEvent('missexplica:data-ready',{detail:items}));
+  return items;
+ }
+ window.loadStudentCourses=load;
+ window.addEventListener('missexplica:auth-ready',()=>{if(configured)load().catch(e=>console.error('[MissExplica] dados:',e))});
 })();
