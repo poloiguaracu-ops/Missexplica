@@ -1,12 +1,12 @@
 // CONFIGURAÇÃO DO SUPABASE
-// Este arquivo pode ficar no GitHub somente com a URL e a chave anon/public.
-// NUNCA coloque a service_role key no navegador ou neste arquivo.
+// Somente a URL e a chave pública podem ficar no GitHub/frontend.
+// NUNCA coloque a service_role/Secret Key aqui.
 window.MISSEXPLICA_SUPABASE = {
-  url: 'https://SEU-PROJETO.supabase.co',
-  anonKey: 'SUA_ANON_PUBLIC_KEY'
+  url: 'https://wyzupmorgumjjwkxflda.supabase.co',
+  anonKey: 'sb_publishable_Osn_-eTtrlY27-GJobmO8w_AUXHyMG9'
 };
 
 window.MISSEXPLICA_AUTH = {
-  enabled: false,
-  note: 'Ative após preencher url e anonKey com os dados do projeto Supabase.'
+  enabled: true,
+  provider: 'supabase'
 };
