@@ -1,84 +1,16 @@
-/* MissExplica — refinamento visual v4 • claro, leve e moderno */
-:root{
-  --mx-accent:#55c89a;
-  --mx-accent-strong:#43b886;
-  --mx-accent-soft:#edf9f3;
-  --mx-ink:#263f35;
-  --mx-muted:#77857f;
-  --mx-line:#e4eee8;
-  --mx-bg:#f8fbf9;
-  --mx-white:#fff;
-  --mx-shadow:0 18px 42px rgba(42,75,62,.07);
-}
-
-html{scroll-behavior:smooth}
-body{background:linear-gradient(180deg,#fbfdfc 0%,#f4f8f6 100%);color:var(--mx-ink)}
-
-/* Navegação pública */
-.landing-header{background:rgba(255,255,255,.92);border-bottom:1px solid var(--mx-line);box-shadow:0 5px 22px rgba(42,75,62,.035)}
-.site-logo strong{color:#315c4b}.site-logo small{color:#8a9791}
-.logo-symbol{background:linear-gradient(135deg,#76d6ad,#55c99b);box-shadow:0 8px 22px rgba(85,200,154,.16)}
-.landing-nav a{color:#687871}.landing-nav a:hover{color:var(--mx-accent-strong)}
-.header-login{background:#fff;border:1px solid #cfe9dc;color:#4e9778;box-shadow:0 5px 15px rgba(42,75,62,.04)}
-.header-login:hover{background:#f3fbf7;color:#3e8063;border-color:#b7dfcb;transform:translateY(-1px)}
-
-/* Hero */
-.hero{background:radial-gradient(circle at 82% 20%,rgba(151,231,198,.22),transparent 25%),radial-gradient(circle at 8% 88%,rgba(212,243,226,.32),transparent 31%),linear-gradient(135deg,#f8fcfa,#fff 56%,#f6faf8)}
-.hero h1{color:#29473b}.hero h1 span{background:linear-gradient(100deg,#53be91,#89dcb8);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p{color:#74827c}.eyebrow,.section-tag,.green{color:#55ad86}
-.green-btn{background:linear-gradient(135deg,#73d4ad,#58c79a);color:#fff;box-shadow:0 10px 22px rgba(85,200,154,.16)}
-.green-btn:hover{box-shadow:0 14px 28px rgba(85,200,154,.20)}
-.outline-btn{background:#fff;border-color:#d7e9df;color:#4f6e61}.outline-btn:hover{background:#f9fcfa;border-color:#c5e2d3}
-.trust span{background:#fff;border-color:#e5efe9;color:#7c8983}
-.visual-card{background:linear-gradient(145deg,#fff,#f3fbf7);border-color:#e0eee7;box-shadow:0 24px 55px rgba(42,75,62,.07)}
-.main-card .play,.video-play{background:linear-gradient(135deg,#82d9b4,#60c99d);box-shadow:0 12px 24px rgba(85,200,154,.15)}
-.floating-card{background:#fff;border-color:#e1eee8;box-shadow:0 12px 28px rgba(42,75,62,.07)}
-
-/* Conteúdo público */
-.landing-section{background:#fcfefd}.benefits-section{background:#fff}.how-section{background:linear-gradient(135deg,#f2fbf6,#f8fcfa)}
-.course-showcase article,.steps>div,.benefit{background:rgba(255,255,255,.98);border-color:var(--mx-line);box-shadow:0 8px 22px rgba(42,75,62,.045);border-radius:20px}
-.course-showcase article:hover,.steps>div:hover,.benefit:hover{transform:translateY(-4px);box-shadow:0 15px 34px rgba(42,75,62,.07);border-color:#cae7d8}
-.showcase-icon,.benefit>span{background:#eefaf4;color:#4d9b76;box-shadow:none}
-.course-chip{background:#f2faf6;color:#4c8f70;border-color:#dbeee4}
-footer{background:#638c7b;color:#f3faf7}
-
-/* Login */
-.login-screen{background:radial-gradient(circle at 12% 12%,rgba(151,231,198,.16),transparent 23%),radial-gradient(circle at 90% 88%,rgba(212,243,226,.22),transparent 28%),linear-gradient(135deg,#fbfefd,#f6faf8)}
-.login-brand strong{color:#315c4b}.login-card{background:rgba(255,255,255,.98);border-color:#e1ece6;box-shadow:0 24px 60px rgba(42,75,62,.08)}
-.login-card .eyebrow{background:#effaf5;border-color:#dceee4}.login-card h1{color:#2e4d40}.login-card>p{color:#77847e}
-.login-card input{background:#fcfefd;border-color:#e1ebe6;color:#355247}.login-card input:focus{border-color:#8ed3b5;box-shadow:0 0 0 4px rgba(123,216,174,.12)}
-.primary-btn{min-height:50px}.login-help{background:#f8fcfa;border-color:#e2eee7}.demo-box{background:#f4fbf7;border-color:#dceee4}
-
-/* Estrutura do AVA */
-.platform{background:radial-gradient(circle at 82% 9%,rgba(151,231,198,.10),transparent 22%),linear-gradient(135deg,#f9fcfa,#f2f8f5)}
-.sidebar{background:linear-gradient(180deg,#6e9b8a,#618d7d);box-shadow:8px 0 28px rgba(42,75,62,.05)}
-.sidebar-brand strong{color:#fff}.sidebar-brand small,.sidebar-section{color:#e1efe9}
-.nav-btn{color:#eff8f4;border-radius:12px}.nav-btn:hover{background:rgba(255,255,255,.10);color:#fff}.nav-btn.active{background:rgba(220,248,235,.24);border-left-color:#e5fff2;box-shadow:none;color:#fff}
-.logout-btn{color:#eef8f4;border-color:rgba(255,255,255,.20)}.logout-btn:hover{background:rgba(255,255,255,.08)}
-.topbar{background:rgba(255,255,255,.96);border-bottom-color:#e7efea;box-shadow:0 5px 20px rgba(42,75,62,.025)}
-.topbar h2{color:#304d40}.breadcrumb{color:#8b9892}.online-dot{background:#f4fbf7;border-color:#dceee4;color:#63a184}.avatar{background:#eff9f4;border-color:#dceee4;color:#559677}
-.page-content{background:transparent}
-
-/* Cards e painéis */
-.stat-card,.panel,.course-card,.quick-card{background:#fff;border-color:var(--mx-line);box-shadow:0 8px 22px rgba(42,75,62,.045)}
-.stat-card:hover,.course-card:hover,.quick-card:hover{box-shadow:0 14px 32px rgba(42,75,62,.07);border-color:#cfe7da}
-.stat-card span,.course-info span,.course-info small,.welcome p,.activity small{color:#78857f}
-.stat-card strong{color:#2e4d40}.course-cover{background:linear-gradient(135deg,#9fe0c0,#7fd0a9);box-shadow:none}
-.action{background:#f2faf6;border-color:#d9ede2;color:#4f906f}.action:hover{background:#e8f7ef;border-color:#c8e5d5}
-.progress{background:#edf4ef}.progress i{background:linear-gradient(90deg,#9be1bf,#7bcfaa);box-shadow:none}
-.role-banner{background:linear-gradient(120deg,#fff,#f4fbf7);border-color:#e1eee7;box-shadow:0 8px 22px rgba(42,75,62,.045)}
-.quick-card{transition:.18s}
-
-/* Sala de aula */
-.course-score{background:#f0faf5;border-color:#dceee4}.video-placeholder{background:radial-gradient(circle at 50% 35%,#8cb8a4,#6f9c8a 60%,#628978 100%);box-shadow:0 18px 40px rgba(42,75,62,.10)}
-.lesson-title,.materials,.lesson-sidebar{background:#fff;border-color:var(--mx-line);box-shadow:0 8px 22px rgba(42,75,62,.045)}
-.lesson-item:hover,.lesson-item.selected{background:#f1faf5}.lesson-item.selected>span{background:#74cda0;color:#fff}.material-item{background:#fcfefd;border-color:var(--mx-line)}
-.table th{background:#f7faf8;color:#87938d}.table th,.table td{border-bottom-color:#edf2ef}.table tr:hover td{background:#fbfefc}.empty{background:#fcfefd;border-color:#dfece5}
-
-/* Refinamentos */
-.role-banner .role-icon{background:#effaf4;color:#5aa17e}.course-card .action{box-shadow:none}.stat-card:after{background:rgba(123,216,174,.10)}
-.hero:after{background:#d9f3e6}.hero:before{background:linear-gradient(90deg,rgba(255,255,255,.3),transparent 45%,rgba(123,216,174,.02))}
-
-@media(max-width:900px){.course-showcase article:nth-child(2),.course-showcase article:nth-child(3){transform:none}.cards{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}}
-@media(max-width:650px){.sidebar{background:#6e9b8a}.nav-btn.active{background:rgba(220,248,235,.28);border-left:0;border-top:2px solid #e5fff2}.course-card,.stat-card,.panel,.quick-card{box-shadow:0 7px 19px rgba(42,75,62,.04)}}
-@media(prefers-reduced-motion:reduce){.floating-card{animation:none!important}.course-showcase article,.course-card,.stat-card,.nav-btn,.action,.lesson-item{transition:none!important}}
+/* MissExplica — camada visual única, clara e nítida */
+:root{--mx-green:#20b981;--mx-green-dark:#13875f;--mx-green-soft:#eaf8f1;--mx-ink:#21352c;--mx-muted:#718078;--mx-border:#dfeae4;--mx-bg:#f5f9f7;--mx-card:#fff;--mx-shadow:0 10px 28px rgba(35,72,58,.07)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{color:var(--mx-ink);background:var(--mx-bg);-webkit-font-smoothing:antialiased}button,input,select,textarea{font:inherit}
+.landing-header,.topbar{background:#fff!important;backdrop-filter:none!important;box-shadow:0 1px 0 var(--mx-border)}
+.logo-symbol{background:linear-gradient(135deg,#27c48a,#159867);box-shadow:0 7px 18px rgba(32,185,129,.18)}
+.header-login{border-color:#cde6d9!important;color:var(--mx-green-dark)!important;background:#fff!important}.header-login:hover{background:var(--mx-green-soft)!important}
+.hero{background:linear-gradient(135deg,#f2fbf6 0%,#fff 55%,#eef8f3 100%);min-height:620px}.hero h1{color:#203b30}.hero h1 span{color:var(--mx-green-dark)!important;background:none!important}.hero p{color:#66766d}.green-btn{background:linear-gradient(135deg,#139966,#20b981)!important;box-shadow:0 9px 22px rgba(32,185,129,.18)!important}.outline-btn{border-color:#cbded5!important;color:#355248!important}
+.visual-card{background:#fff!important;border:1px solid var(--mx-border)!important;box-shadow:var(--mx-shadow)!important;transform:none!important}.visual-card:hover{transform:translateY(-4px)!important}.floating-card{background:#fff!important;border:1px solid var(--mx-border)!important;box-shadow:var(--mx-shadow)!important}
+.landing-section,.benefits-section,.faq-section{background:#fff}.how-section{background:#eef8f3}.course-showcase article,.steps>div,.benefit{background:#fff!important;border:1px solid var(--mx-border)!important;box-shadow:0 7px 20px rgba(35,72,58,.045)!important}.course-showcase article:hover,.steps>div:hover,.benefit:hover{transform:translateY(-3px)!important;box-shadow:0 12px 26px rgba(35,72,58,.08)!important}.course-chip,.showcase-icon,.benefit>span{background:var(--mx-green-soft)!important;color:var(--mx-green-dark)!important}
+footer{background:#e6f2eb!important;color:#496358!important;border-top:1px solid #d6e6dd}.login-screen{background:linear-gradient(135deg,#f3fbf7,#fff 60%,#f1f8f5)}.login-card{background:#fff!important;border:1px solid var(--mx-border)!important;box-shadow:0 16px 42px rgba(35,72,58,.08)!important}.login-card input{background:#fbfefc!important;border-color:#dce8e2!important}.login-card input:focus{border-color:#76cfa9!important;box-shadow:0 0 0 3px rgba(32,185,129,.1)!important}.demo-box,.login-help{background:#f4fbf7!important;border-color:#dceee4!important}
+.platform{background:#f4f8f6!important}.sidebar{width:255px;background:#fff!important;color:#31453d!important;border-right:1px solid var(--mx-border);box-shadow:4px 0 18px rgba(35,72,58,.04)!important}.sidebar-brand strong{color:#21382e!important}.sidebar-brand small,.sidebar-section{color:#7c8b84!important}.nav-btn{color:#5f7068!important}.nav-btn:hover,.nav-btn.active{background:var(--mx-green-soft)!important;color:var(--mx-green-dark)!important}.logout-btn{color:#61736a!important;border-color:#dbe7e1!important;background:#fff!important}.topbar{height:82px!important}.breadcrumb{color:#8a9791!important}.topbar h2{color:#294238!important}.online-dot{color:var(--mx-green-dark)!important;background:var(--mx-green-soft)!important;border:1px solid #d9ece2;padding:5px 9px;border-radius:999px}.avatar{background:var(--mx-green-soft)!important;color:var(--mx-green-dark)!important;border:1px solid #d9ece2!important}
+.page-content{background:transparent!important}.stat-card,.course-card,.panel,.quick-card,.materials,.lesson-sidebar{background:#fff!important;border:1px solid var(--mx-border)!important;box-shadow:0 7px 20px rgba(35,72,58,.045)!important}.stat-card:hover,.course-card:hover,.quick-card:hover{box-shadow:0 12px 26px rgba(35,72,58,.075)!important}.stat-card strong{color:#294238!important}.course-cover{background:linear-gradient(135deg,#55c997,#26af7a)!important;box-shadow:none!important}.action{background:var(--mx-green-soft)!important;border:1px solid #d3ebe0!important;color:var(--mx-green-dark)!important}.progress{background:#eaf1ed!important}.progress i{background:linear-gradient(90deg,#35b987,#20b981)!important}.role-banner{background:linear-gradient(110deg,#fff,#f1faf6)!important;border-color:var(--mx-border)!important;box-shadow:0 7px 20px rgba(35,72,58,.045)!important}
+.course-room-head h1{color:#294238}.course-score{background:var(--mx-green-soft)!important;border:1px solid #d4ebdf!important}.video-placeholder{background:linear-gradient(135deg,#dcefe6,#c7e5d6)!important;color:#295346!important;box-shadow:0 12px 28px rgba(35,72,58,.08)!important}.video-play{background:linear-gradient(135deg,#35c08c,#22ab77)!important;box-shadow:0 8px 20px rgba(32,185,129,.18)!important}.lesson-title,.lesson-sidebar,.materials{background:#fff!important;border:1px solid var(--mx-border)!important}.lesson-item.selected{background:#ecfaf3!important;color:var(--mx-green-dark)!important}.lesson-item.selected>span{background:#58c797!important;color:#fff!important}.table th{background:#f7faf8!important}.table th,.table td{border-bottom-color:#e6eeea!important}
+/* Nítido: nenhum elemento decorativo cobre a interface */
+*,*:before,*:after{filter:none!important;backdrop-filter:none!important}.landing-header,.topbar{opacity:1!important}.visual-card:before,.course-showcase article:before,.steps>div:before,.benefit:before,.sidebar:after,.main-content:before{display:none!important}
+@media(max-width:900px){.sidebar{width:74px}.cards{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}}@media(max-width:560px){.sidebar{width:100%;height:66px}.cards{grid-template-columns:1fr}.topbar{padding:0 16px!important}.page-content{padding:20px 16px!important}.hero h1{font-size:40px}}
