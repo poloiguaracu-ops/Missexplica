@@ -9,7 +9,7 @@ Deno.serve(async req=>{
  try{
   if(req.method!=='POST')throw new Error('Método não permitido.');
   const auth=req.headers.get('Authorization');if(!auth)throw new Error('Não autenticado.');
-  const base=Deno.env.get('SUPABASE_URL')!;const anon=Deno.env.get('SUPABASE_ANON_KEY')!;const serviceRole=Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+  const base=Deno.env.get('SUPABASE_URL')!;const anon=Deno.env.get('SUPABASE_ANON_KEY')!;const serviceRole=Deno.env.get('MISS_EXP_SUPABASE_SERVICE_ROLE')!;
   if(!base||!anon||!serviceRole)throw new Error('Serviço indisponível.');
   const caller=createClient(base,anon,{global:{headers:{Authorization:auth}}});const {data:{user:callerUser}}=await caller.auth.getUser();if(!callerUser)throw new Error('Não autenticado.');
   const admin=createClient(base,serviceRole);const {data:manager}=await admin.from('profiles').select('role,active').eq('id',callerUser.id).maybeSingle();if(!manager||manager.role!=='manager'||manager.active!==true)throw new Error('Apenas gestores podem liberar acesso.');
