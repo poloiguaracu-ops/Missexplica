@@ -15,16 +15,19 @@
     localStorage.setItem('missexplica_auth','true');
     localStorage.setItem('missexplica_role',profile?.role||'student');
     localStorage.setItem('missexplica_name',profile?.full_name||user?.user_metadata?.full_name||'Aluno');
+    document.getElementById('landingScreen')?.classList.add('hidden');
     document.getElementById('loginScreen')?.classList.add('hidden');
     document.getElementById('platform')?.classList.remove('hidden');
     if(typeof window.render==='function')window.render();
     window.dispatchEvent(new CustomEvent('missexplica:auth-ready',{detail:{profile,user}}));
   };
 
-  function logoutToLogin(){
+  function logoutToLanding(){
     clearCache();
     document.getElementById('platform')?.classList.add('hidden');
-    document.getElementById('loginScreen')?.classList.remove('hidden');
+    document.getElementById('loginScreen')?.classList.add('hidden');
+    document.getElementById('landingScreen')?.classList.remove('hidden');
+    window.scrollTo(0,0);
   }
 
   if(!configured){
@@ -47,24 +50,23 @@
 
   async function boot(client){
     window.missexplicaSupabase=client;
-    /* Compatibilidade para módulos legados que ainda procuram supabaseClient. */
     window.supabaseClient=client;
     resolveReady(client);
 
     client.auth.onAuthStateChange((event,session)=>{
-      if(event==='SIGNED_OUT'||!session){logoutToLogin();return;}
+      if(event==='SIGNED_OUT'||!session){logoutToLanding();return;}
       if(event==='SIGNED_IN'||event==='USER_UPDATED'){
         profileLoad=profileLoad.then(()=>loadProfile(client,session.user)).catch(error=>console.error('[MissExplica] perfil:',error));
       }
     });
 
     const {data,error}=await client.auth.getSession();
-    if(error){rejectReady(error);logoutToLogin();return;}
+    if(error){rejectReady(error);logoutToLanding();return;}
     if(data.session){
       profileLoad=profileLoad.then(()=>loadProfile(client,data.session.user));
       await profileLoad;
     }else{
-      logoutToLogin();
+      logoutToLanding();
     }
   }
 
