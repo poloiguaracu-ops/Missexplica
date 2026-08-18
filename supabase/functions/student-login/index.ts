@@ -19,7 +19,7 @@ Deno.serve(async req=>{
   const isRu=/^MX\d{6,}$/i.test(raw);const cpfDigits=raw.replace(/\D/g,'');
   if((!isRu&&cpfDigits.length!==11)||passwordValue.length<8)throw new Error('CPF/RU ou senha inválidos.');
   const subjectValue=isRu?raw.toUpperCase():cpfDigits;
-  const base=Deno.env.get('SUPABASE_URL')!;const anon=Deno.env.get('SUPABASE_ANON_KEY')!;const serviceRole=Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+  const base=Deno.env.get('SUPABASE_URL')!;const anon=Deno.env.get('SUPABASE_ANON_KEY')!;const serviceRole=Deno.env.get('MISS_EXP_SUPABASE_SERVICE_ROLE')!;
   if(!base||!anon||!serviceRole)throw new Error('Serviço de autenticação indisponível.');
   const admin=createClient(base,serviceRole);
   const forwarded=req.headers.get('x-forwarded-for')||req.headers.get('x-real-ip')||'unknown';const ip=forwarded.split(',')[0].trim();
