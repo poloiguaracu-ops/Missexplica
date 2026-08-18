@@ -12,9 +12,10 @@ O AVA usa PostgreSQL/Supabase para autenticação, cursos, matrículas, aulas e 
 6. Execute `login_rate_limit.sql` para proteção contra tentativas repetidas no login.
 7. Configure o Storage conforme as políticas do projeto.
 8. Faça o deploy de `supabase/functions/student-login`.
-9. Configure na Edge Function os secrets `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY` e `ALLOWED_ORIGINS`.
-10. Configure `supabase-config.js` somente com Project URL e chave anon/public.
-11. Nunca coloque `service_role` no navegador, no GitHub ou em HTML/JavaScript público.
+9. Faça o deploy de `supabase/functions/provision-student`.
+10. Configure na Edge Function o secret customizado `MISS_EXP_SUPABASE_SERVICE_ROLE` e o secret `ALLOWED_ORIGINS`. As variáveis padrão `SUPABASE_URL` e `SUPABASE_ANON_KEY` são fornecidas pelo ambiente do Supabase.
+11. Configure `supabase-config.js` somente com Project URL e chave anon/public.
+12. Nunca coloque `service_role`/secret key no navegador, no GitHub ou em HTML/JavaScript público.
 
 ## Login do aluno
 
@@ -66,3 +67,7 @@ O modelo canônico de `lesson_progress` usa `completed`, `completed_at`, `watche
 ## Regra de acesso
 
 O papel não é escolhido pelo usuário no navegador. Ele é definido em `profiles.role`. As matrículas determinam quais cursos o aluno pode estudar e as políticas RLS reforçam isso no banco.
+
+## Frontend
+
+`student-courses.js` é a fonte ativa para carregar os cursos reais do aluno. O carregador legado `student-data.js` não é incluído pelo `index.html` para evitar que dois carregadores concorrentes sobrescrevam `loadStudentCourses`.
