@@ -1,0 +1,40 @@
+/* MissExplica V11 — acabamento premium e UX */
+:root{--mx11-green:#22b573;--mx11-deep:#0b3324;--mx11-soft:#eef9f3;--mx11-line:#dceae3;--mx11-muted:#6f7f78;--mx11-shadow:0 18px 48px rgba(11,51,36,.08)}
+body{font-synthesis:none;text-rendering:optimizeLegibility}
+.landing-header,.topbar{background:rgba(255,255,255,.88)!important;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.hero h1,.welcome h1,.course-room-head h1,.login-card h1{font-weight:900!important;color:var(--mx11-deep)!important}
+.hero p,.welcome p,.course-room-head p,.section-heading p{max-width:68ch}
+.panel,.stat-card,.course-card,.quick-card,.benefit,.course-showcase article,.materials,.lesson-sidebar{border-color:var(--mx11-line)!important;box-shadow:0 8px 28px rgba(11,51,36,.05)!important}
+.panel,.stat-card,.course-card,.quick-card,.benefit{isolation:isolate}
+.stat-card{overflow:hidden}
+.stat-card:before{content:"";position:absolute;inset:auto -30px -45px auto;width:125px;height:125px;border-radius:50%;background:radial-gradient(circle,rgba(34,181,115,.12),rgba(34,181,115,0) 68%);z-index:-1}
+.course-card{min-width:0}
+.course-info{min-width:0}
+.course-info strong,.quick-card strong,.course-showcase h3,.panel h3,.role-banner strong{overflow-wrap:anywhere}
+.course-info span,.course-info small{line-height:1.35}
+.action,.green-btn,.outline-btn,.header-login,.primary-btn{min-height:42px;display:inline-flex;align-items:center;justify-content:center}
+.action:active,.green-btn:active,.outline-btn:active,.header-login:active,.primary-btn:active{transform:translateY(0) scale(.98)!important}
+.nav-btn{position:relative;overflow:hidden}
+.nav-btn.active:after{content:"";position:absolute;left:8px;right:8px;bottom:4px;height:2px;border-radius:99px;background:var(--mx11-green);opacity:.65}
+.lesson-item{display:flex;align-items:center;gap:10px}
+.lesson-item>div{min-width:0}
+.lesson-item strong,.lesson-item small{overflow-wrap:anywhere}
+.video-placeholder{min-height:360px;display:grid!important;place-items:center!important}
+.video-placeholder span,.video-placeholder small{position:relative;z-index:2}
+.video-placeholder small{max-width:32ch;text-align:center;opacity:.8}
+.lesson-main{min-width:0}
+.course-room-head{gap:24px}
+.course-score{min-width:88px}
+.table{width:100%}
+.table td,.table th{white-space:normal}
+.empty{padding:22px;border:1px dashed #cfded6;border-radius:16px;background:#f8fcfa;color:var(--mx11-muted);text-align:center}
+.demo-box{margin-top:16px;padding:13px 15px;border-radius:13px;background:#effaf4;border:1px solid #cfe8da;color:#26523f;font-size:12px}
+.quick-card span,.quick-card small,.activity small{line-height:1.45}
+input,textarea,select{min-height:44px}
+input[type=file]{padding:10px}
+.login-card,.visual-card{box-shadow:var(--mx11-shadow)!important}
+@media(min-width:1100px){.page-content{max-width:1560px!important}.grid{grid-template-columns:minmax(0,1.35fr) minmax(320px,.65fr)!important}.course-list{display:grid;gap:12px}.quick-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+@media(max-width:900px){.course-room-head{display:flex;flex-wrap:wrap}.course-score{margin-left:auto}.video-placeholder{min-height:300px!important}}
+@media(max-width:720px){.topbar h2{font-size:18px!important}.breadcrumb{display:none}.course-room-head{display:block}.course-score{margin-top:12px}.video-placeholder{min-height:230px!important}.cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}.stat-card{min-width:0}.page-content{padding-bottom:110px!important}.action,.green-btn,.outline-btn{min-height:44px}.table{min-width:620px}.panel{overflow:hidden}.quick-card{min-width:0}}
+@media(max-width:430px){.cards{grid-template-columns:1fr!important}.welcome{padding:18px!important}.role-banner{padding:15px!important}.course-card{display:grid!important;grid-template-columns:auto minmax(0,1fr)!important}.course-card .action{grid-column:1 / -1;width:100%;margin-top:4px}.course-cover{justify-self:start}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}.visual-card{transform:none!important}}
