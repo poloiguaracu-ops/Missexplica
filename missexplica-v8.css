@@ -1,0 +1,43 @@
+/* MissExplica V8 — refinamento premium do AVA */
+:root{--mx-g:#22b573;--mx-g2:#0f8b56;--mx-deep:#092b1d;--mx-soft:#eefaf4;--mx-line:#dceae3;--mx-text:#14221c;--mx-muted:#718079;--mx-shadow:0 18px 45px rgba(9,43,29,.08)}
+*{scrollbar-width:thin;scrollbar-color:#b9dcc9 transparent}
+body{color:var(--mx-text)}
+.topbar{position:sticky;top:0;z-index:15;backdrop-filter:blur(16px);background:rgba(255,255,255,.9)!important}
+.topbar:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,#cde8d9,transparent);pointer-events:none}
+.page-content{animation:mxFade .28s ease both}
+@keyframes mxFade{from{opacity:.72;transform:translateY(4px)}to{opacity:1;transform:none}}
+.welcome{position:relative;overflow:hidden}
+.welcome:after{content:"";position:absolute;width:240px;height:240px;border-radius:50%;right:-100px;top:-130px;background:radial-gradient(circle,rgba(72,217,154,.16),rgba(72,217,154,0) 68%);pointer-events:none}
+.cards{align-items:stretch}
+.stat-card{min-height:112px;display:flex;flex-direction:column;justify-content:center}
+.stat-card span{letter-spacing:.02em}
+.course-card{align-items:center;gap:14px}
+.course-cover{flex:0 0 auto;width:56px!important;height:56px!important;display:grid;place-items:center}
+.course-info{min-width:0}
+.course-info strong{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.course-info span,.course-info small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.action,.green-btn,.outline-btn,.header-login{position:relative;overflow:hidden}
+.action:after,.green-btn:after,.outline-btn:after,.header-login:after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.28) 50%,transparent 70%);transform:translateX(-130%);transition:transform .45s ease;pointer-events:none}
+.action:hover:after,.green-btn:hover:after,.outline-btn:hover:after,.header-login:hover:after{transform:translateX(130%)}
+.panel h3{display:flex;align-items:center;gap:8px}
+.activity>div{position:relative;overflow:hidden}
+.activity>div:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--mx-g);opacity:.85}
+.quick-card{position:relative;overflow:hidden}
+.quick-card:after{content:"";position:absolute;right:-35px;bottom:-40px;width:100px;height:100px;border-radius:50%;background:#effaf4}
+.q-icon{position:relative;z-index:1}
+.materials,.lesson-sidebar{box-shadow:var(--mx-shadow)!important}
+.lesson-sidebar h3{padding-bottom:10px;border-bottom:1px solid var(--mx-line)}
+.lesson-item.selected{box-shadow:inset 3px 0 0 var(--mx-g),0 6px 18px rgba(34,181,115,.06)!important}
+.video-placeholder{min-height:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.video-placeholder span{font-weight:800;letter-spacing:.02em;color:#fff}
+.video-placeholder small{color:rgba(255,255,255,.7)}
+.login-brand .logo-symbol{box-shadow:0 14px 30px rgba(34,181,115,.22)}
+.login-card{backdrop-filter:blur(10px)}
+.login-card form label{letter-spacing:.02em}
+input::placeholder,textarea::placeholder{color:#9aa7a1}
+.empty{padding:22px;border:1px dashed #cfe1d7;border-radius:15px;background:#f8fbf9;color:var(--mx-muted);text-align:center}
+.table-wrap,.table{max-width:100%;overflow:hidden}
+.table td,.table th{vertical-align:middle}
+@media(max-width:900px){.sidebar{box-shadow:0 8px 24px rgba(9,43,29,.05)!important}.page-content{max-width:100%}.welcome{margin-bottom:16px}}
+@media(max-width:720px){.topbar{position:sticky;top:0}.page-content{animation:none}.stat-card{min-height:92px}.course-cover{width:50px!important;height:50px!important}.course-info strong{font-size:13px!important}.course-info span{font-size:10px!important}.video-placeholder{min-height:250px}.action:after,.green-btn:after,.outline-btn:after,.header-login:after{display:none}}
+@media(prefers-reduced-motion:reduce){.page-content{animation:none!important}.action:after,.green-btn:after,.outline-btn:after,.header-login:after{transition:none!important}}
