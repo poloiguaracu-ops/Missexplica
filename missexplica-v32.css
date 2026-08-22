@@ -1,0 +1,30 @@
+/* MissExplica V32 — normalização final */
+:root{--mx-green:#18b96f;--mx-dark:#0b5d3d;--mx-ink:#13221c;--mx-muted:#708079;--mx-bg:#f5f8f6;--mx-card:#fff;--mx-border:#dfe9e3}
+*{box-sizing:border-box}
+body{color:var(--mx-ink);background:var(--mx-bg)}
+.page-content{max-width:1480px!important;padding:30px clamp(16px,3.2vw,44px) 60px!important}
+.topbar{padding-inline:clamp(16px,3vw,36px)!important}
+.sidebar{border-right-color:var(--mx-border)!important}
+.nav-btn{font-weight:700!important;letter-spacing:-.05px!important}
+.nav-btn.active{background:#eaf8f1!important;color:var(--mx-dark)!important}
+.welcome{position:relative;overflow:hidden}
+.welcome:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-80px;top:-90px;background:#e8f8f0;pointer-events:none}
+.cards{align-items:stretch!important}
+.stat-card,.panel,.course-card,.quick-card,.materials,.lesson-sidebar{box-shadow:0 5px 18px rgba(17,51,36,.045)!important}
+.stat-card{min-height:112px!important}
+.stat-card strong{line-height:1!important}
+.course-card{min-width:0!important}
+.course-info strong{display:-webkit-box!important;-webkit-box-orient:vertical!important;-webkit-line-clamp:2!important;overflow:hidden!important}
+.quick-card h3,.quick-card strong{line-height:1.2!important}
+.progress{position:relative!important}
+.progress i{min-width:3px!important}
+.action,.primary-btn,.green-btn,.outline-btn{min-height:44px!important}
+button:disabled,.action:disabled,.primary-btn:disabled,.green-btn:disabled{opacity:.55!important;cursor:not-allowed!important;transform:none!important;box-shadow:none!important}
+:focus-visible{outline:3px solid rgba(24,185,111,.35)!important;outline-offset:2px!important}
+.table-wrap,.table-container{max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch!important}
+.table{min-width:620px!important}
+.video-placeholder{overflow:hidden!important}
+.modal,.dialog,.popup{max-width:calc(100vw - 24px)!important}
+@media(max-width:900px){.page-content{padding-top:20px!important}.sidebar{box-shadow:0 4px 16px rgba(15,54,37,.05)!important}.nav-btn{min-height:44px!important}.topbar{position:sticky!important;top:0!important;z-index:35!important}}
+@media(max-width:600px){.welcome h1{font-size:clamp(23px,7vw,31px)!important}.stat-card{min-height:98px!important}.course-card{padding:12px!important}.quick-card{min-height:110px!important}.panel{padding:16px!important}.video-placeholder{min-height:210px!important}.table{min-width:560px!important}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
