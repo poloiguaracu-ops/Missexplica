@@ -1,0 +1,71 @@
+/* MissExplica V13 — identidade de AVA / aplicação */
+:root{--v13-green:#20b873;--v13-deep:#0b3526;--v13-soft:#e9f8f1;--v13-paper:#fff;--v13-bg:#f1f6f3;--v13-line:#d9e7e0;--v13-text:#14251f;--v13-muted:#66786f}
+body{background:var(--v13-bg);color:var(--v13-text)}
+.platform{background:radial-gradient(circle at 92% 5%,rgba(32,184,115,.08),transparent 24%),linear-gradient(135deg,#f4f8f6,#edf4f0)!important}
+.sidebar{background:rgba(255,255,255,.88)!important;backdrop-filter:blur(20px);border-right:1px solid rgba(217,231,224,.85)!important}
+.sidebar-brand{margin-bottom:8px}
+.sidebar-brand:after{content:"Ambiente virtual de aprendizagem";display:block;font-size:9px;color:#87968f;margin:3px 7px 8px}
+.nav-btn{position:relative;min-height:44px!important;border:1px solid transparent!important;display:flex!important;align-items:center;gap:9px}
+.nav-btn.active{background:linear-gradient(90deg,#e7f8ef,#f8fcfa)!important;border-color:#cde9d9!important;box-shadow:0 8px 20px rgba(7,55,37,.05),inset 3px 0 0 var(--v13-green)!important}
+.nav-btn b{width:22px;text-align:center;font-size:14px}
+.topbar{height:76px!important;background:rgba(255,255,255,.84)!important;backdrop-filter:blur(20px);position:sticky;top:0;z-index:15}
+.topbar h2{font-size:23px!important;letter-spacing:-.7px}
+.page-content{padding-top:30px!important}
+.role-banner{position:relative;overflow:hidden!important;background:linear-gradient(135deg,#ffffff 0%,#f0faf5 100%)!important;border-radius:24px!important;padding:18px 20px!important;border-color:#cfe6da!important}
+.role-banner:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,#0c7a4b,#2ac982)}
+.welcome{position:relative;overflow:hidden;background:linear-gradient(135deg,#ffffff,#edf9f3)!important;border-radius:24px!important;border-color:#cfe6da!important}
+.welcome:after{content:"";position:absolute;width:240px;height:240px;border-radius:50%;right:-110px;top:-120px;background:rgba(32,184,115,.09);box-shadow:0 0 0 55px rgba(32,184,115,.035)}
+.welcome h1{position:relative;z-index:1}
+.welcome p{position:relative;z-index:1}
+.cards{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px!important}
+.stat-card{position:relative;min-height:118px;display:flex!important;flex-direction:column;justify-content:center;overflow:hidden;border-radius:21px!important;border-color:var(--v13-line)!important;background:rgba(255,255,255,.96)!important}
+.stat-card:before{content:"";position:absolute;left:0;bottom:0;width:100%;height:3px;background:linear-gradient(90deg,#108451,#31c884);transform:scaleX(.35);transform-origin:left;transition:transform .25s ease}
+.stat-card:hover:before{transform:scaleX(1)}
+.stat-card span{font-size:10px!important;letter-spacing:.07em;text-transform:uppercase;color:var(--v13-muted)!important}
+.stat-card strong{font-size:34px!important;line-height:1.05!important;color:var(--v13-deep)!important}
+.grid{gap:20px!important}
+.panel{background:rgba(255,255,255,.97)!important;border-radius:23px!important;border-color:var(--v13-line)!important;box-shadow:0 12px 32px rgba(14,54,39,.05)!important}
+.panel h3{display:flex;align-items:center;gap:8px;font-size:17px!important;margin-bottom:16px!important}
+.course-list{gap:13px!important}
+.course-card{display:flex;align-items:center;gap:13px;min-height:82px;padding:13px!important;border-radius:18px!important;background:#fff!important;border-color:#deebe5!important}
+.course-card:hover{transform:translateY(-3px) scale(1.005)!important;box-shadow:0 14px 30px rgba(12,55,39,.08)!important}
+.course-cover{width:56px!important;height:56px!important;min-width:56px!important;border-radius:16px!important;background:linear-gradient(145deg,#0e7548,#2ac982)!important;display:grid!important;place-items:center!important}
+.course-info{min-width:0}
+.course-info strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+.course-info span{display:block;margin-bottom:9px!important}
+.progress{height:9px!important}
+.quick-grid{gap:12px!important}
+.quick-card{position:relative;border-radius:18px!important;background:linear-gradient(135deg,#fff,#f8fcfa)!important}
+.quick-card:after{content:"→";position:absolute;right:16px;top:16px;color:#5a786b;font-weight:800;opacity:.55;transition:transform .2s ease,opacity .2s ease}
+.quick-card:hover:after{transform:translateX(4px);opacity:1}
+.activity>div{border-radius:15px!important;border-color:#dfebe5!important;background:#f8fbf9!important}
+.activity>div:first-child{background:linear-gradient(90deg,#effaf4,#fbfdfc)!important;border-color:#cfe8da!important}
+.table{border-spacing:0 8px!important}
+.table td{background:#fff!important;border-color:#e2ece6!important}
+.action,.green-btn{min-height:40px!important;border-radius:12px!important}
+.green-btn{box-shadow:0 10px 22px rgba(32,184,115,.18)!important}
+.action:active,.green-btn:active{transform:translateY(1px)!important}
+.course-room{max-width:1450px;margin:0 auto}
+.course-room-head{padding:22px 24px;border:1px solid var(--v13-line);border-radius:24px;background:linear-gradient(135deg,#fff,#edf9f3);box-shadow:0 14px 35px rgba(7,55,37,.05);margin-bottom:18px}
+.course-room-head h1{font-size:clamp(25px,3.5vw,42px)!important;letter-spacing:-1.5px!important}
+.course-score{min-width:105px!important;height:105px!important;border-radius:28px!important;background:linear-gradient(145deg,#0a6a42,#27c27f)!important;color:#fff!important;box-shadow:0 14px 30px rgba(10,106,66,.22)!important}
+.course-score strong{font-size:30px!important}
+.lesson-layout{gap:20px!important}
+.lesson-main,.lesson-sidebar{border-color:var(--v13-line)!important}
+.lesson-main{background:#fff!important;border-radius:23px!important;padding:20px!important}
+.lesson-sidebar{border-radius:23px!important;box-shadow:0 10px 28px rgba(7,55,37,.045)!important}
+.video-placeholder{min-height:390px!important;border-radius:21px!important;background:linear-gradient(145deg,#082419,#0d4c32 55%,#19a968)!important;box-shadow:0 22px 48px rgba(5,35,23,.22)!important}
+.video-placeholder:before{content:"MISSEXPLICA • AULA";position:absolute;left:18px;top:16px;color:rgba(255,255,255,.75);font-size:9px;letter-spacing:.16em;font-weight:800}
+.video-play{width:82px!important;height:82px!important;background:#fff!important;color:#0b5b39!important;box-shadow:0 16px 36px rgba(0,0,0,.23)!important}
+.lesson-title{padding:20px 4px 4px!important}
+.lesson-title h2{font-size:24px!important;letter-spacing:-.7px}
+.material-item{border-radius:15px!important;border-color:#dce9e2!important;background:#fbfdfc!important}
+.lesson-item{min-height:58px!important}
+.lesson-item.selected{box-shadow:inset 3px 0 0 var(--v13-green)!important}
+.login-screen{background:radial-gradient(circle at 15% 12%,rgba(32,184,115,.18),transparent 26%),radial-gradient(circle at 88% 88%,rgba(10,106,66,.08),transparent 29%),#f5faf7!important}
+.login-card{border-radius:28px!important;border-color:#d7e7df!important}
+.login-brand .logo-symbol{box-shadow:0 12px 28px rgba(32,184,115,.24)!important}
+@media(max-width:1000px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.lesson-layout{grid-template-columns:1fr!important}.lesson-sidebar{order:2}.video-placeholder{min-height:330px!important}}
+@media(max-width:720px){.topbar{height:68px!important}.page-content{padding:18px 14px 88px!important}.cards{grid-template-columns:1fr 1fr!important}.stat-card{min-height:98px!important;padding:15px!important}.stat-card strong{font-size:28px!important}.course-card{min-height:76px!important}.course-cover{width:48px!important;height:48px!important;min-width:48px!important}.course-room-head{padding:18px!important}.course-room-head h1{font-size:28px!important}.course-score{min-width:78px!important;height:78px!important}.video-placeholder{min-height:225px!important}.lesson-main{padding:14px!important}.panel{padding:19px!important}}
+@media(max-width:420px){.cards{grid-template-columns:1fr!important}.stat-card{min-height:88px!important}.course-info span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.nav-btn{padding:10px 9px!important}.nav-btn span{font-size:11px!important}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}.course-card:hover{transform:none!important}}
