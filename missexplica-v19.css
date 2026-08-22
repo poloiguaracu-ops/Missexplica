@@ -1,0 +1,24 @@
+/* MissExplica V19 — UX e clareza visual */
+:root{--mx19-green:#19b86f;--mx19-deep:#0c5b3b;--mx19-ink:#12231c;--mx19-muted:#6d7b75;--mx19-line:#d9e7df;--mx19-soft:#eef9f3}
+*{box-sizing:border-box}
+button,.nav-btn,.action,.quick-card,.course-card,.lesson-item,a{cursor:pointer}
+button:focus-visible,.nav-btn:focus-visible,.action:focus-visible,.quick-card:focus-visible,.course-card:focus-visible,.lesson-item:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid rgba(25,184,111,.35)!important;outline-offset:2px!important}
+.nav-btn,.action,.quick-card,.course-card,.lesson-item{transition:background-color .16s ease,border-color .16s ease,box-shadow .16s ease,transform .16s ease}
+.nav-btn:hover{background:#f0faf5!important}.nav-btn.active{font-weight:900!important;color:var(--mx19-deep)!important}
+.nav-btn .badge,.badge{min-width:20px;height:20px;padding:0 6px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:#e7f8ef;color:#087747;font-size:10px;font-weight:900}
+.topbar{z-index:40!important}.topbar h2{max-width:calc(100vw - 230px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.page-content{width:100%;min-width:0}.panel,.materials,.lesson-sidebar,.course-card,.quick-card,.stat-card,.welcome{min-width:0}
+.course-card:hover,.quick-card:hover,.action:hover{box-shadow:0 10px 24px rgba(9,59,39,.08)!important;transform:translateY(-1px)}
+.course-info{min-width:0}.course-info strong,.course-info span,.course-info small{overflow-wrap:anywhere;word-break:break-word}
+.status-pill,.tag,.chip{display:inline-flex;align-items:center;gap:5px;min-height:26px;padding:5px 9px;border-radius:999px;background:var(--mx19-soft);color:#087747;border:1px solid #cae9d8;font-size:10px;font-weight:900}
+.progress{position:relative}.progress i{min-width:2px}.progress[aria-valuenow="0"] i{min-width:0}
+.empty-state{border:1px dashed #cdded5;border-radius:18px;background:#fbfefd;padding:28px;text-align:center;color:var(--mx19-muted)}.empty-state strong{display:block;color:var(--mx19-ink);margin-bottom:5px}
+.skeleton{position:relative;overflow:hidden;background:#edf2ef!important;border-radius:10px!important}.skeleton:after{content:"";position:absolute;inset:0;transform:translateX(-100%);background:linear-gradient(90deg,transparent,rgba(255,255,255,.65),transparent);animation:mx19Shimmer 1.35s infinite}
+@keyframes mx19Shimmer{100%{transform:translateX(100%)}}
+.toast,.alert,.notice{border-radius:14px!important;border:1px solid var(--mx19-line)!important;box-shadow:0 12px 28px rgba(9,59,39,.08)!important}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}.table-wrap table{min-width:640px}
+.modal,.dialog{max-width:min(720px,calc(100vw - 28px))!important;max-height:min(86vh,820px)!important;overflow:auto}
+.video-placeholder{overflow:hidden!important}.video-placeholder iframe,.video-placeholder video{width:100%!important;height:100%!important;display:block}
+@media(max-width:900px){.topbar h2{max-width:52vw}.page-content{overflow-x:hidden}.panel{overflow:hidden}.modal,.dialog{max-width:calc(100vw - 20px)!important}}
+@media(max-width:600px){.topbar{height:64px!important}.topbar h2{font-size:17px!important;max-width:48vw}.nav-btn{min-height:44px!important;padding:10px 12px!important}.action{min-height:42px!important;padding:10px 12px!important}.quick-card,.course-card{transform:none!important}.course-card:hover,.quick-card:hover{box-shadow:0 5px 16px rgba(9,59,39,.06)!important}.empty-state{padding:22px 16px}.toast,.alert,.notice{font-size:13px!important}.video-placeholder{min-height:210px!important;height:auto!important;aspect-ratio:16/9}.modal,.dialog{border-radius:16px!important}}
+@media(prefers-reduced-motion:reduce){.skeleton:after{animation:none}.nav-btn,.action,.quick-card,.course-card,.lesson-item{transition:none!important}}
