@@ -5,16 +5,5 @@ window.MISSEXPLICA_SUPABASE = {
   url: 'https://wyzupmorgumjjwkxflda.supabase.co',
   anonKey: 'sb_publishable_Osn_-eTtrlY27-GJobmO8w_AUXHyMG9'
 };
-
-window.MISSEXPLICA_AUTH = {
-  enabled: true,
-  provider: 'supabase'
-};
-
-// Carrega a camada visual premium depois dos estilos principais.
-(function loadMissExplicaPolish(){
-  var link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.href = './ui-polish.css?v=1';
-  document.head.appendChild(link);
-})();
+window.MISSEXPLICA_AUTH = {enabled:true,provider:'supabase'};
+(function(){['ui-polish.css?v=2','missexplica-v6.css?v=1'].forEach(function(href){var link=document.createElement('link');link.rel='stylesheet';link.href=href;document.head.appendChild(link);});})();
