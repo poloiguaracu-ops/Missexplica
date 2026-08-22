@@ -18,5 +18,6 @@ window.MISSEXPLICA_AUTH = {enabled:true,provider:'supabase'};
   'missexplica-v13.css?v=1',
   'missexplica-v14.css?v=1',
   'missexplica-v15.css?v=1',
-  'missexplica-v16.css?v=1'
-].forEach(function(href){var link=document.createElement('link');link.rel='stylesheet';link.href=href;document.head.appendChild(link);});})();
+  'missexplica-v16.css?v=1',
+  'missexplica-v17.css?v=1'
+].forEach(function(href){var link=document.createElement('link');link.rel='stylesheet';link.href=href;document.head.appendChild(link);})();
