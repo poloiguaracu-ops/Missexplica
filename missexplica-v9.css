@@ -1,0 +1,51 @@
+/* MissExplica V9 — interface mais limpa e próxima de um aplicativo */
+:root{--mx9-green:#22b573;--mx9-deep:#0d6841;--mx9-ink:#15221d;--mx9-muted:#6d7d76;--mx9-line:#dde9e3;--mx9-bg:#f5f8f6;--mx9-card:#fff;--mx9-soft:#ebf8f1}
+.platform{background:linear-gradient(135deg,#f5f9f7,#eef5f1)!important}
+.main-content{min-width:0!important}
+.page-content{max-width:1480px!important;margin:0 auto!important}
+.topbar{height:76px!important;padding:0 clamp(18px,3vw,36px)!important;background:rgba(255,255,255,.94)!important;backdrop-filter:blur(14px);position:sticky;top:0;z-index:30}
+.topbar h2{font-size:23px!important;font-weight:850!important;letter-spacing:-.8px!important}
+.breadcrumb{font-weight:700!important;letter-spacing:.02em}
+.avatar{width:40px!important;height:40px!important;box-shadow:0 6px 18px rgba(34,181,115,.12)}
+.sidebar{box-shadow:8px 0 28px rgba(9,50,33,.045)!important}
+.sidebar-brand{margin-bottom:10px}
+.nav-btn{position:relative;overflow:hidden}
+.nav-btn:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(34,181,115,.08),transparent);opacity:0;transition:.18s}
+.nav-btn:hover:after,.nav-btn.active:after{opacity:1}
+.welcome{position:relative;overflow:hidden!important;background:linear-gradient(135deg,#fff 0%,#f1faf5 100%)!important}
+.welcome:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-115px;top:-155px;background:rgba(34,181,115,.10);pointer-events:none}
+.welcome h1{position:relative;z-index:1}
+.welcome p{position:relative;z-index:1}
+.cards{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+.stat-card{min-height:112px!important;display:flex!important;flex-direction:column!important;justify-content:center!important}
+.stat-card span{letter-spacing:.02em}
+.grid{align-items:start!important}
+.panel{background:rgba(255,255,255,.97)!important}
+.panel h3{display:flex;align-items:center;gap:8px}
+.course-list{min-width:0}
+.course-card{min-width:0!important;align-items:center!important}
+.course-info{min-width:0!important}
+.course-info strong{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.course-info span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.progress{box-shadow:inset 0 1px 2px rgba(15,55,37,.05)}
+.action,.green-btn{white-space:nowrap!important}
+.quick-card{min-height:112px!important;display:flex;flex-direction:column;justify-content:center}
+.video-placeholder{min-height:360px!important}
+.course-room-head{gap:20px!important}
+.course-score{min-width:108px!important;padding:16px 18px!important;border-radius:16px!important;background:#eff9f4!important;border:1px solid #d4eddf!important;text-align:center}
+.lesson-layout{align-items:start!important}
+.lesson-sidebar{position:sticky!important;top:94px!important;max-height:calc(100vh - 112px);overflow:auto}
+.materials{box-shadow:0 8px 24px rgba(8,50,33,.04)!important}
+.material-item{transition:background .18s ease,transform .18s ease}
+.material-item:hover{background:#f4fbf7!important;transform:translateY(-1px)}
+.table{width:100%!important}
+.table th{font-weight:850!important}
+.empty{border:1px dashed #cbdcd3!important;border-radius:16px!important;padding:28px!important;background:#f8fbf9!important;color:#718078!important;text-align:center}
+input[type="file"]{padding:10px!important}
+textarea{resize:vertical;min-height:100px}
+.login-card{animation:mx9In .35s ease both}
+@keyframes mx9In{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(max-width:980px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}.grid{grid-template-columns:1fr!important}.lesson-sidebar{position:static!important;max-height:none}}
+@media(max-width:720px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}.topbar{height:70px!important}.topbar h2{font-size:19px!important}.welcome{padding:20px!important}.stat-card{min-height:94px!important}.stat-card strong{font-size:24px!important}.quick-card{min-height:96px!important}.course-room-head{gap:12px!important}.course-score{min-width:88px!important}.video-placeholder{min-height:240px!important}.course-card{gap:10px!important}.course-card .action{width:100%!important}.lesson-layout{gap:14px!important}}
+@media(max-width:460px){.cards{grid-template-columns:1fr 1fr!important}.stat-card span{font-size:10px!important}.stat-card strong{font-size:22px!important}.page-content{padding-left:12px!important;padding-right:12px!important}}
+@media(prefers-reduced-motion:reduce){.login-card{animation:none!important}.nav-btn:after{transition:none!important}}
