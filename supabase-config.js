@@ -20,7 +20,7 @@ window.MISSEXPLICA_AUTH = {enabled:true,provider:'supabase'};
 (function(){
   var D=document;
   function load(){
-    ['missexplica-functional-v37.js?v=1','missexplica-functional-v38.js?v=1','missexplica-functional-v39.js?v=1','missexplica-functional-v40.js?v=1','missexplica-functional-v41.js?v=1','missexplica-functional-v42.js?v=1'].forEach(function(src){var s=D.createElement('script');s.src=src;s.defer=true;D.head.appendChild(s)});
+    ['missexplica-functional-v37.js?v=1','missexplica-functional-v38.js?v=1','missexplica-functional-v39.js?v=1','missexplica-functional-v40.js?v=1','missexplica-functional-v41.js?v=1','missexplica-functional-v42.js?v=1','missexplica-bugfix-v43.js?v=1'].forEach(function(src){var s=D.createElement('script');s.src=src;s.defer=true;D.head.appendChild(s)});
   }
   if(D.readyState==='loading')D.addEventListener('DOMContentLoaded',load,{once:true});else load();
 })();
