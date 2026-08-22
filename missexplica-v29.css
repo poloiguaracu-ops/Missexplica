@@ -1,0 +1,24 @@
+/* MissExplica V29 — performance + acabamento de produção */
+:root{--mx29:#18b96f;--mx29-deep:#0b5d3d;--mx29-ink:#13221c;--mx29-muted:#708079;--mx29-line:#dce7e1;--mx29-soft:#eaf8f1}
+html{scroll-behavior:smooth}
+body{overflow-x:hidden}
+/* reduz custo de pintura em blocos pesados */
+.panel,.course-card,.quick-card,.stat-card,.materials,.lesson-sidebar,.role-banner{contain:layout paint;}
+/* evita animações e sombras caras em dispositivos com baixa potência */
+@media (prefers-reduced-motion: no-preference){.course-card,.quick-card,.action,.green-btn,.primary-btn,.nav-btn{transition:transform .15s ease,background-color .15s ease,border-color .15s ease,box-shadow .15s ease}}
+/* feedback de interação mais previsível */
+button:not(:disabled),a,.nav-btn,.course-card,.quick-card,.action{cursor:pointer}
+button:disabled{cursor:not-allowed;opacity:.58}
+button:focus-visible,a:focus-visible,.nav-btn:focus-visible,.action:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid rgba(24,185,111,.34);outline-offset:2px}
+/* textos longos não quebram a estrutura */
+.course-info,.panel,.welcome,.role-banner,.lesson-item{min-width:0}
+.course-info strong,.panel h3,.welcome h1,.role-banner h3,.lesson-item strong{overflow-wrap:anywhere;word-break:normal}
+/* densidade melhor no desktop */
+.page-content{content-visibility:auto;}
+/* tabelas e listas longas continuam utilizáveis */
+.table-wrap,.table-responsive{overflow:auto;max-width:100%;}
+/* mobile: preserva áreas de toque e reduz excesso visual */
+@media(max-width:720px){body{font-size:14px}.page-content{content-visibility:visible}.topbar,.sidebar{backdrop-filter:none!important}.nav-btn{min-height:44px!important}.action,.green-btn,.primary-btn{min-height:44px!important}.course-card,.quick-card,.panel,.stat-card{box-shadow:0 5px 16px rgba(9,55,37,.035)!important}.video-placeholder{box-shadow:0 10px 24px rgba(4,29,18,.11)!important}}
+@media(max-width:520px){.topbar h2{max-width:62vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.welcome h1{font-size:clamp(22px,7vw,30px)!important}.panel h3{font-size:15px!important}.stat-card strong{font-size:25px!important}.page-content{padding-left:12px!important;padding-right:12px!important}}
+/* acessibilidade: contraste e movimento */
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}.course-card:hover,.quick-card:hover,.action:hover,.green-btn:hover,.primary-btn:hover,.nav-btn:hover{transform:none!important}}
