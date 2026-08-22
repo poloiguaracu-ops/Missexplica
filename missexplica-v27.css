@@ -1,0 +1,43 @@
+/* MissExplica V27 — app dashboard polish */
+:root{--v27-green:#18b86f;--v27-deep:#0c5d3d;--v27-ink:#11251c;--v27-muted:#6d7d76;--v27-line:#dce8e2;--v27-bg:#f5f8f6}
+body{background:var(--v27-bg);color:var(--v27-ink)}
+.app-shell,.dashboard,.page-content{max-width:1600px!important;margin-inline:auto}
+.sidebar{box-shadow:8px 0 28px rgba(12,93,61,.04)!important}
+.topbar{height:72px!important;box-shadow:0 2px 16px rgba(10,45,30,.04)!important}
+.page-content{padding-top:26px!important}
+.welcome{border-radius:22px!important;padding:26px 28px!important;background:linear-gradient(135deg,#ffffff,#edf9f3)!important;border:1px solid #cfe9dc!important;box-shadow:0 12px 30px rgba(11,80,51,.055)!important}
+.welcome h1{font-weight:950!important;letter-spacing:-1.5px!important}
+.welcome p{color:var(--v27-muted)!important}
+.cards{gap:14px!important}
+.stat-card{border-radius:17px!important;border:1px solid var(--v27-line)!important;box-shadow:0 7px 21px rgba(11,80,51,.04)!important;padding:19px!important}
+.stat-card strong{color:var(--v27-deep)!important;font-weight:950!important}
+.stat-card span{color:#7a8b83!important;font-weight:800!important}
+.panel,.course-card,.quick-card,.lesson-sidebar,.materials{border-color:var(--v27-line)!important;box-shadow:0 7px 22px rgba(11,80,51,.035)!important}
+.panel{border-radius:18px!important}
+.panel h3{letter-spacing:-.2px!important}
+.course-card{border-radius:16px!important;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease!important}
+.course-card:hover{transform:translateY(-2px);border-color:#b8dccb!important;box-shadow:0 12px 28px rgba(11,80,51,.07)!important}
+.course-cover{border-radius:14px!important}
+.course-info strong{font-weight:900!important;color:var(--v27-ink)!important}
+.progress{height:8px!important;background:#e6efe9!important}
+.progress i{background:linear-gradient(90deg,#12915c,#25c979)!important}
+.quick-card{border-radius:17px!important;min-height:132px!important}
+.quick-card:hover{transform:translateY(-2px);border-color:#b8dccb!important}
+.action,.primary-btn,.green-btn{border-radius:12px!important}
+.action:active,.primary-btn:active,.green-btn:active{transform:translateY(1px)!important}
+input,textarea,select{border-color:#d7e4dd!important;background:#fff!important}
+input::placeholder,textarea::placeholder{color:#9aa8a1!important}
+input:focus,textarea:focus,select:focus{border-color:#5ec895!important;box-shadow:0 0 0 4px rgba(24,184,111,.10)!important}
+.video-placeholder{border-radius:20px!important;min-height:400px!important}
+.video-play{width:72px!important;height:72px!important}
+.lesson-item{border-radius:11px!important}
+.lesson-item.selected{background:#e9f8f0!important;box-shadow:inset 3px 0 0 var(--v27-green)!important}
+.table th{font-weight:900!important}
+.table td{font-size:13px!important}
+.badge,.status,.tag{border-radius:999px!important;font-weight:800!important}
+.modal,.dialog,.dropdown,.menu-popover{border-radius:18px!important;border:1px solid var(--v27-line)!important;box-shadow:0 24px 70px rgba(7,48,30,.14)!important}
+.toast,.alert{border-radius:13px!important;box-shadow:0 12px 28px rgba(7,48,30,.10)!important}
+button:focus-visible,a:focus-visible,[role="button"]:focus-visible{outline:3px solid rgba(24,184,111,.28)!important;outline-offset:2px!important}
+@media(max-width:850px){.page-content{padding:18px 14px 42px!important}.topbar{height:66px!important}.welcome{padding:21px!important}.cards{gap:11px!important}.video-placeholder{min-height:270px!important}.course-card:hover,.quick-card:hover{transform:none}}
+@media(max-width:520px){.welcome{border-radius:18px!important}.welcome h1{font-size:25px!important}.panel{padding:17px!important}.stat-card{padding:16px!important}.quick-card{min-height:118px!important}.video-placeholder{min-height:215px!important;height:215px!important}.action,.primary-btn,.green-btn{min-height:44px!important}.table{font-size:12px!important}}
+@media(prefers-reduced-motion:reduce){.course-card,.quick-card{transition:none!important}.course-card:hover,.quick-card:hover{transform:none}}
