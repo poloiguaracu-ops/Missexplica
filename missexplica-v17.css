@@ -1,0 +1,28 @@
+/* MissExplica V17 — UX, legibilidade e estados */
+:root{--mx17-ink:#14231d;--mx17-muted:#6e7c75;--mx17-green:#16b86e;--mx17-deep:#087549;--mx17-line:#dce9e2;--mx17-bg:#f5f8f6}
+body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--mx17-ink);background:var(--mx17-bg)}
+*{box-sizing:border-box}
+button,a,input,select,textarea{font:inherit}
+button,a{ -webkit-tap-highlight-color:transparent }
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid rgba(22,184,110,.24);outline-offset:2px}
+.panel,.course-card,.stat-card,.quick-card,.materials,.lesson-sidebar{box-shadow:0 7px 24px rgba(9,60,39,.045)!important}
+.panel,.course-card,.stat-card,.quick-card,.materials{overflow:hidden}
+.course-card{min-width:0}
+.course-info{min-width:0}.course-info strong{white-space:normal;overflow-wrap:anywhere;word-break:break-word}
+.course-card .course-info span,.course-card .course-info small{line-height:1.45}
+.badge,.status,.chip{white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.empty-state,.empty,.no-data{min-height:160px;padding:26px;border:1px dashed #cbded4;border-radius:18px;background:linear-gradient(180deg,#fff,#f8fcfa);display:grid;place-items:center;text-align:center;color:var(--mx17-muted)}
+.empty-state strong,.empty strong,.no-data strong{color:var(--mx17-ink);font-weight:900}
+.loading,.skeleton{background:linear-gradient(90deg,#edf3f0 25%,#f8fbf9 37%,#edf3f0 63%);background-size:400% 100%;animation:mx17Shimmer 1.25s ease infinite;border-radius:12px}
+@keyframes mx17Shimmer{0%{background-position:100% 50%}100%{background-position:0 50%}}
+.toast,.alert,.flash,.notice{border-radius:14px!important;border:1px solid #cfe3d8!important;box-shadow:0 12px 30px rgba(9,60,39,.08)!important}
+.progress{position:relative;overflow:hidden}.progress i{min-width:4px}
+.video-placeholder{overflow:hidden!important}.video-placeholder .video-play{transition:transform .18s ease}.video-placeholder:hover .video-play{transform:scale(1.06)}
+.lesson-item{min-height:46px;display:flex;align-items:center;gap:10px}.lesson-item strong,.lesson-item span{min-width:0;overflow-wrap:anywhere}
+.action,.green-btn,.primary-btn,.secondary-btn{min-height:42px!important;border-radius:12px!important}.action:active,.green-btn:active,.primary-btn:active,.secondary-btn:active{transform:translateY(1px)!important}
+.table-wrap,.table-container{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.table{min-width:620px}
+textarea{resize:vertical}
+@media(max-width:850px){body{font-size:15px}.topbar{position:sticky;top:0;z-index:25}.page-content{min-width:0}.panel,.course-card,.stat-card,.quick-card{box-shadow:0 5px 18px rgba(9,60,39,.04)!important}.nav-btn{min-height:44px}.video-placeholder{min-height:260px!important}}
+@media(max-width:520px){.page-content{padding-left:12px!important;padding-right:12px!important}.welcome h1{line-height:1.12}.panel{padding:16px!important}.course-card{padding:12px!important}.stat-card strong{font-size:25px!important}.quick-card{padding:16px!important}.action,.green-btn,.primary-btn,.secondary-btn{width:100%;justify-content:center}.table{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.loading,.skeleton{animation:none;background:#edf3f0}.video-placeholder .video-play{transition:none}}
