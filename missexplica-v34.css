@@ -1,0 +1,52 @@
+/* MissExplica V34 — refinamento de UX e responsividade */
+:root{--mx-v34-green:#18b96f;--mx-v34-deep:#0b6240;--mx-v34-ink:#14231d;--mx-v34-muted:#718078;--mx-v34-line:#dfe9e4;--mx-v34-soft:#edf9f3}
+html{scroll-padding-top:82px}
+body{color:var(--mx-v34-ink)}
+.page-content{width:100%;max-width:1520px!important;margin-inline:auto!important}
+.topbar{position:sticky!important;top:0!important;z-index:30!important}
+.breadcrumb{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:min(46vw,520px)}
+.top-actions{flex-shrink:0}
+.stat-card,.panel,.course-card,.quick-card,.materials,.lesson-sidebar,.role-banner{contain:layout paint}
+.stat-card strong,.course-info strong,.panel h3{overflow-wrap:anywhere}
+.course-card{min-width:0}
+.course-info{min-width:0;overflow:hidden}
+.course-info strong{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.course-info span,.course-info small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.progress{position:relative;overflow:hidden}
+.progress i{display:block;min-width:0;transition:width .35s ease}
+.progress[aria-label]{isolation:isolate}
+.action:focus-visible,.nav-btn:focus-visible,.green-btn:focus-visible,.primary-btn:focus-visible,.logout-btn:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid rgba(24,185,111,.28)!important;outline-offset:2px!important}
+button:disabled,.action:disabled,.green-btn:disabled,.primary-btn:disabled{cursor:not-allowed!important;opacity:.55!important;transform:none!important;box-shadow:none!important}
+.table-wrap,.table-container{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain}
+.table{min-width:640px}
+.video-placeholder{overflow:hidden;isolation:isolate}
+.video-play{cursor:pointer}
+.quick-card,.panel,.stat-card,.course-card{transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+.quick-card:hover,.stat-card:hover,.panel:hover{border-color:#c9dfd3!important}
+@media(max-width:900px){
+  .topbar{padding-inline:16px!important}
+  .breadcrumb{max-width:42vw}
+  .page-content{padding-left:16px!important;padding-right:16px!important}
+  .sidebar{box-shadow:0 4px 18px rgba(10,53,35,.05)!important}
+  .sidebar nav{scrollbar-width:none}.sidebar nav::-webkit-scrollbar{display:none}
+}
+@media(max-width:600px){
+  .breadcrumb{display:none}
+  .topbar h2{max-width:58vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .top-actions{gap:8px}
+  .welcome{margin-bottom:14px!important}
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .stat-card{padding:15px!important}
+  .stat-card strong{font-size:23px!important}
+  .course-card{padding:12px!important}
+  .quick-card{min-height:110px!important}
+  .panel{overflow:hidden}
+}
+@media(max-width:390px){
+  .cards{grid-template-columns:1fr!important}
+  .topbar{padding-inline:12px!important}
+  .page-content{padding-inline:12px!important}
+  .quick-card{min-height:100px!important}
+  .course-info strong{font-size:13px!important}
+}
+@media(prefers-reduced-motion:reduce){.progress i{transition:none!important}.quick-card,.stat-card,.panel,.course-card{transition:none!important}}
