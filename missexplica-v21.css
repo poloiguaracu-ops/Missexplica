@@ -1,0 +1,27 @@
+/* MissExplica V21 — performance visual, consistência e acabamento */
+:root{--mx21-bg:#f5f8f6;--mx21-card:#fff;--mx21-text:#14221c;--mx21-muted:#718078;--mx21-line:#dfe9e4;--mx21-green:#20b774;--mx21-deep:#0d6040}
+body{background:var(--mx21-bg)!important;color:var(--mx21-text)!important;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+*{box-sizing:border-box}
+button,.btn,.action,.nav-btn,a{touch-action:manipulation}
+:where(button,.btn,.action,.nav-btn,input,textarea,select,a):focus-visible{outline:3px solid rgba(32,183,116,.28)!important;outline-offset:2px!important}
+.panel,.course-card,.quick-card,.stat-card,.materials,.lesson-sidebar{contain:layout paint}
+.course-card,.quick-card,.stat-card,.panel,.action,.nav-btn,.green-btn,.primary-btn{transition:transform .16s ease,box-shadow .16s ease,background-color .16s ease,border-color .16s ease,color .16s ease}
+.course-card:hover,.quick-card:hover,.stat-card:hover{transform:translateY(-2px)}
+.panel{box-shadow:0 7px 24px rgba(9,59,39,.04)!important;border-color:var(--mx21-line)!important}
+.course-card,.quick-card{box-shadow:0 6px 18px rgba(9,59,39,.035)!important;border-color:var(--mx21-line)!important}
+.stat-card{box-shadow:0 6px 18px rgba(9,59,39,.04)!important;border-color:var(--mx21-line)!important}
+.stat-card strong{color:var(--mx21-deep)!important}
+.progress{height:8px!important;background:#e7eee9!important}.progress i{background:linear-gradient(90deg,#14915c,#22bf78)!important;box-shadow:none!important}
+.course-info strong{max-width:100%;overflow:hidden;text-overflow:ellipsis;display:-webkit-box!important;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.quick-card small,.course-info small{line-height:1.35!important;color:var(--mx21-muted)!important}
+.topbar{box-shadow:0 1px 0 rgba(9,59,39,.05)!important}
+.sidebar{box-shadow:4px 0 16px rgba(9,59,39,.025)!important}
+.nav-btn.active{font-weight:900!important}
+.action{min-height:42px!important}
+input,textarea,select{box-shadow:none!important}input::placeholder,textarea::placeholder{color:#9aa9a2!important}
+.table-wrap,.table-container{overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.video-placeholder{contain:paint;transform:translateZ(0)}
+.skeleton,.loading,.is-loading{animation:none!important;background:linear-gradient(90deg,#edf3ef 25%,#f7faf8 37%,#edf3ef 63%)!important;background-size:400% 100%!important}
+@media(max-width:900px){.course-card:hover,.quick-card:hover,.stat-card:hover{transform:none}.page-content{width:100%!important}.panel{box-shadow:0 5px 16px rgba(9,59,39,.035)!important}}
+@media(max-width:560px){.topbar{height:64px!important}.page-content{padding-left:12px!important;padding-right:12px!important}.panel{border-radius:16px!important}.course-card,.quick-card{border-radius:15px!important}.action,.green-btn,.primary-btn,.nav-btn{min-height:44px!important}.video-placeholder{border-radius:17px!important}.lesson-item{min-height:44px!important}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
