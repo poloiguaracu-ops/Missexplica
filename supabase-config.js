@@ -38,7 +38,6 @@ window.MISSEXPLICA_AUTH = {enabled:true,provider:'supabase'};
   ready(function(){wirePagePersistence();wireNetwork();wireShortcuts();observe();setTimeout(function(){wireDraft();wireCourseSearch();wireProgress()},80)})
 })();
 
-// V37 — atalhos, busca, favoritos, estado local e robustez
 (function(){
   'use strict';
   var D=document,W=window,KEY='missexplica_v37_state';
@@ -51,4 +50,35 @@ window.MISSEXPLICA_AUTH = {enabled:true,provider:'supabase'};
   function stateMonitor(){try{W.addEventListener('offline',function(){toast37('Você está offline. Dados locais continuam disponíveis.','error')});W.addEventListener('online',function(){toast37('Conexão restaurada.','success')})}catch(e){}}
   function init37(){shortcuts();stateMonitor();var target=D.getElementById('pageContent')||D.body;var mo=new MutationObserver(function(){setTimeout(addCourseTools,20)});mo.observe(target,{childList:true,subtree:true});setTimeout(addCourseTools,100);}
   if(D.readyState==='loading')D.addEventListener('DOMContentLoaded',init37,{once:true});else init37();
+})();
+
+(function(){
+  'use strict';
+  var D=document;
+  function init(){
+    D.addEventListener('keydown',function(e){
+      if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){
+        var i=D.getElementById('mx37Search')||D.getElementById('mxCourseSearch');
+        if(i){e.preventDefault();i.focus();i.select()}
+      }
+    });
+  }
+  if(D.readyState==='loading')D.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
+
+(function(){
+  'use strict';
+  var D=document,W=window;
+  function init(){
+    W.addEventListener('error',function(){try{console.warn('MissExplica: erro capturado pela camada de segurança.')}catch(e){}});
+    W.addEventListener('unhandledrejection',function(){try{console.warn('MissExplica: promessa rejeitada capturada.')}catch(e){}});
+  }
+  if(D.readyState==='loading')D.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
+
+// V37 funcional é carregada como script separado para manter o núcleo estável.
+(function(){
+  var D=document;
+  function load(){var s=D.createElement('script');s.src='missexplica-functional-v37.js?v=1';s.defer=true;D.head.appendChild(s)}
+  if(D.readyState==='loading')D.addEventListener('DOMContentLoaded',load,{once:true});else load();
 })();
