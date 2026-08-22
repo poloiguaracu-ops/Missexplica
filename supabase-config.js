@@ -11,6 +11,5 @@ window.MISSEXPLICA_AUTH = {enabled:true,provider:'supabase'};
   'missexplica-v9.css?v=1','missexplica-v10.css?v=1','missexplica-v11.css?v=1','missexplica-v12.css?v=1',
   'missexplica-v13.css?v=1','missexplica-v14.css?v=1','missexplica-v15.css?v=1','missexplica-v16.css?v=1',
   'missexplica-v17.css?v=1','missexplica-v18.css?v=1','missexplica-v19.css?v=1','missexplica-v20.css?v=1',
-  'missexplica-v21.css?v=1','missexplica-v22.css?v=1','missexplica-v23.css?v=1','missexplica-v24.css?v=1','missexplica-v25.css?v=1','missexplica-v26.css?v=1','missexplica-v27.css?v=1','missexplica-v28.css?v=1'
-].forEach(function(href){var link=document.createElement('link');link.rel='stylesheet';link.href=href;document.head.appendChild(link);});
-})();
+  'missexplica-v21.css?v=1','missexplica-v22.css?v=1','missexplica-v23.css?v=1','missexplica-v24.css?v=1','missexplica-v25.css?v=1','missexplica-v26.css?v=1','missexplica-v27.css?v=1','missexplica-v28.css?v=1','missexplica-v29.css?v=1'
+].forEach(function(href){var link=document.createElement('link');link.rel='stylesheet';link.href=href;document.head.appendChild(link);});})();
