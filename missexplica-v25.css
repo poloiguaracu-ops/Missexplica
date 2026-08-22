@@ -1,0 +1,26 @@
+/* MissExplica V25 — contraste, clareza e mobile */
+:root{--m25-bg:#f5f8f6;--m25-surface:#fff;--m25-text:#10231b;--m25-muted:#687a72;--m25-green:#19b875;--m25-deep:#0d6845;--m25-line:#d9e6df;--m25-focus:rgba(25,184,117,.22)}
+body{background:var(--m25-bg);color:var(--m25-text);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.sidebar,.topbar,.panel,.course-card,.stat-card,.quick-card,.materials,.lesson-sidebar,.modal,.login-card{border-color:var(--m25-line)!important}
+.topbar{box-shadow:0 1px 0 rgba(16,35,27,.04)!important}
+.nav-btn{color:#52635c!important}.nav-btn:hover{color:var(--m25-deep)!important;background:#edf9f3!important}.nav-btn.active{color:var(--m25-deep)!important;background:#eaf8f1!important;font-weight:850!important}
+.topbar h2,.welcome h1,.panel h3,.course-info strong{color:var(--m25-text)!important}
+.breadcrumb,.course-info span,.course-info small,.welcome p,.stat-card span{color:var(--m25-muted)!important}
+.welcome{border:1px solid #c7e4d4!important;background:linear-gradient(135deg,#ffffff,#f0faf5)!important}
+.stat-card,.panel,.course-card,.quick-card{box-shadow:0 5px 18px rgba(16,35,27,.045)!important}
+.stat-card strong{color:var(--m25-deep)!important;font-variant-numeric:tabular-nums}
+.course-card{min-width:0}.course-info{min-width:0}.course-info strong{overflow-wrap:anywhere;word-break:break-word}
+.course-cover{background:linear-gradient(135deg,#0d6845,#20bf7a)!important}
+.progress{background:#e5eee9!important}.progress i{background:linear-gradient(90deg,#14915b,#25c77e)!important}
+button,.green-btn,.primary-btn,.action,.nav-btn,.course-card,.quick-card{touch-action:manipulation}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,a:focus-visible,.nav-btn:focus-visible{outline:3px solid var(--m25-focus)!important;outline-offset:2px!important}
+button:disabled,.action:disabled{opacity:.55!important;cursor:not-allowed!important;transform:none!important}
+input,textarea,select{color:var(--m25-text)!important;background:#fbfdfc!important}.login-card input:focus,.login-card textarea:focus,.login-card select:focus{border-color:#5bc794!important;box-shadow:0 0 0 4px var(--m25-focus)!important}
+.badge,.status,.tag{font-weight:800!important;line-height:1.2!important}
+.table{font-size:13px!important}.table th{font-weight:850!important}.table td{vertical-align:middle!important}
+.video-placeholder{contain:layout paint!important}.video-play{cursor:pointer!important}
+.empty-state,.empty,.no-data{border:1px dashed #c9ddd3!important;background:#fbfdfc!important;color:var(--m25-muted)!important;border-radius:16px!important;padding:22px!important}
+.toast,.alert,.notice{border-radius:12px!important;box-shadow:0 10px 28px rgba(16,35,27,.09)!important}
+@media(max-width:900px){.sidebar{box-shadow:0 3px 12px rgba(16,35,27,.06)!important}.page-content{width:100%!important}.grid,.cards,.quick-grid{min-width:0!important}}
+@media(max-width:600px){body{font-size:14px!important}.topbar{min-height:64px!important;height:64px!important}.topbar h2{font-size:17px!important}.page-content{padding:16px 12px 72px!important}.welcome{padding:20px!important}.welcome h1{font-size:25px!important}.panel{padding:16px!important}.quick-card{min-height:112px!important;padding:16px!important}.course-card{padding:12px!important}.stat-card strong{font-size:25px!important}.video-placeholder{min-height:210px!important;height:210px!important}.modal{max-width:calc(100vw - 24px)!important;max-height:calc(100vh - 24px)!important;overflow:auto!important}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
