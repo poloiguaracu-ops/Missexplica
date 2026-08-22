@@ -1,0 +1,34 @@
+/* MissExplica V24 — refinamento de produto */
+:root{--mx24-g:#19b86f;--mx24-g2:#0f7b4d;--mx24-ink:#10231b;--mx24-muted:#708078;--mx24-bg:#f5f8f6;--mx24-line:#dfe9e4;--mx24-card:#fff}
+body{background:var(--mx24-bg);color:var(--mx24-ink)}
+*{box-sizing:border-box}
+.sidebar,.topbar,.panel,.stat-card,.course-card,.quick-card,.materials,.lesson-sidebar,.login-card,.modal,.role-banner{border-color:var(--mx24-line)!important}
+.topbar{box-shadow:0 1px 0 rgba(16,35,27,.03)!important}
+.page-content{padding-top:26px!important}
+.page-content h1,.page-content h2,.page-content h3,.page-content h4{letter-spacing:-.025em}
+.welcome{padding:30px 32px!important;border-radius:22px!important;background:linear-gradient(135deg,#fff,#f2faf6)!important}
+.stat-card{min-height:120px!important;display:flex!important;flex-direction:column!important;justify-content:center!important}
+.stat-card strong{line-height:1!important}
+.course-card{min-height:94px!important;align-items:center!important}
+.course-card:focus-within,.quick-card:focus-within,.panel:focus-within{outline:3px solid rgba(25,184,111,.16);outline-offset:2px}
+.course-cover{flex:0 0 auto!important}
+.course-info{overflow:hidden!important}.course-info strong{white-space:normal!important;text-wrap:balance}
+.course-info span,.course-info small{display:block!important;overflow-wrap:anywhere!important}
+.quick-card{min-height:138px!important}
+.quick-card strong{display:block!important;margin-top:7px}
+.progress{height:8px!important}
+.progress i{min-width:3px!important}
+.nav-btn{border:1px solid transparent!important}.nav-btn:hover{border-color:#d7e8df!important}.nav-btn.active{border-color:#c9e8d8!important}
+.btn,.green-btn,.primary-btn,.action{min-height:42px!important;border-radius:11px!important;font-weight:800!important}
+button:disabled,.btn:disabled,.green-btn:disabled,.primary-btn:disabled{cursor:not-allowed!important;opacity:.55!important;transform:none!important;box-shadow:none!important}
+input::placeholder,textarea::placeholder{color:#9aa7a1!important}
+input:focus,textarea:focus,select:focus{outline:3px solid rgba(25,184,111,.13)!important}
+.badge,.status,.chip{font-weight:800!important;letter-spacing:.01em}
+.video-placeholder{min-height:400px!important}.video-placeholder .video-play{transition:transform .18s ease,box-shadow .18s ease}.video-placeholder .video-play:hover{transform:scale(1.05)}
+.table-wrap,.table-container{overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+.empty-state{max-width:560px!important;margin-inline:auto!important;text-align:center!important;padding:32px!important;border:1px dashed #cbded3!important;border-radius:18px!important;background:#fbfefc!important}
+.toast,.alert,.notification{border-radius:13px!important;box-shadow:0 12px 30px rgba(8,42,27,.12)!important}
+.modal{border-radius:20px!important;box-shadow:0 25px 70px rgba(8,42,27,.2)!important}
+@media(max-width:900px){.page-content{padding:20px 16px 48px!important}.welcome{padding:24px!important}.panel{padding:20px!important}.video-placeholder{min-height:320px!important}}
+@media(max-width:560px){.page-content{padding:16px 12px 72px!important}.welcome{padding:20px!important;border-radius:18px!important}.welcome h1{font-size:26px!important}.stat-card{min-height:102px!important}.course-card{grid-template-columns:1fr!important}.course-cover{width:100%!important;height:48px!important;border-radius:12px!important}.quick-card{min-height:116px!important}.video-placeholder{min-height:220px!important;height:220px!important}.video-placeholder .video-play{width:64px!important;height:64px!important}.btn,.green-btn,.primary-btn,.action{min-height:46px!important}}
+@media(prefers-reduced-motion:reduce){.video-placeholder .video-play{transition:none!important}}
