@@ -1,0 +1,49 @@
+/* MissExplica — Premium UI v2
+   Camada visual complementar: foco em hierarquia, microinterações e AVA.
+*/
+:root{--mx-accent:#18a66a;--mx-accent-2:#48d99a;--mx-deep:#063b29;--mx-text:#10231b;--mx-muted:#6a7b74;--mx-line:#dceae3;--mx-surface:#fff;--mx-soft:#f1f8f4}
+*{scrollbar-width:thin;scrollbar-color:#b9d9ca transparent}
+html{scroll-padding-top:90px}
+body{letter-spacing:-.01em}
+button,.action,.green-btn,.header-login,.outline-btn{position:relative;overflow:hidden}
+button:after,.action:after,.green-btn:after,.header-login:after,.outline-btn:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.28) 50%,transparent 65%);transform:translateX(-120%);transition:transform .55s ease;pointer-events:none}
+button:hover:after,.action:hover:after,.green-btn:hover:after,.header-login:hover:after,.outline-btn:hover:after{transform:translateX(120%)}
+.hero h1{max-width:780px;text-wrap:balance}
+.hero p{max-width:650px;text-wrap:pretty}
+.hero-actions .green-btn{min-width:180px}
+.course-showcase article,.benefit,.steps>div{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.course-showcase article:hover,.benefit:hover,.steps>div:hover{border-color:#b9ddca!important}
+.course-showcase article:hover .showcase-icon{transform:scale(1.06) rotate(-2deg);background:#dff6e9!important}
+.showcase-icon{transition:transform .25s ease,background .25s ease}
+/* AVA cards */
+.cards{gap:18px!important}
+.stat-card{position:relative;overflow:hidden;background:linear-gradient(145deg,#fff,#f7fbf9)!important}
+.stat-card:before{content:"";position:absolute;width:90px;height:90px;right:-28px;top:-28px;border-radius:50%;background:rgba(72,217,154,.12)}
+.stat-card strong{position:relative;font-size:28px!important;letter-spacing:-1px}
+.stat-card span{position:relative;color:var(--mx-muted)!important;font-weight:700}
+.course-card{background:linear-gradient(145deg,#fff,#fbfefc)!important;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+.course-card:hover{transform:translateY(-4px);box-shadow:0 18px 45px rgba(7,55,37,.09)!important;border-color:#b9ddca!important}
+.course-cover{background:linear-gradient(135deg,var(--mx-deep),var(--mx-accent),var(--mx-accent-2))!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)}
+.progress{height:9px!important;background:#e3eee8!important;border-radius:99px!important;overflow:hidden}
+.progress i{background:linear-gradient(90deg,var(--mx-accent),var(--mx-accent-2))!important;border-radius:inherit}
+.action{border-radius:11px!important;font-weight:800!important}
+.role-banner{background:linear-gradient(135deg,#fff,#eefaf4)!important;border-color:#d5e9df!important}
+.role-icon{box-shadow:0 10px 25px rgba(24,166,106,.13)}
+/* Empty states */
+.empty{text-align:center;padding:54px 25px!important;color:var(--mx-muted);line-height:1.7}
+.empty strong{color:var(--mx-text);font-size:16px}
+/* Better focus / accessibility */
+:focus-visible{outline:3px solid rgba(24,166,106,.3)!important;outline-offset:3px}
+/* Subtle entrance */
+.hero>div:first-child,.hero-visual,.course-showcase article,.benefit,.steps>div{animation:mx-rise .55s ease both}
+.hero-visual{animation-delay:.08s}.course-showcase article:nth-child(2){animation-delay:.06s}.course-showcase article:nth-child(3){animation-delay:.12s}
+@keyframes mx-rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:720px){
+ .hero-actions .green-btn,.hero-actions .outline-btn{min-height:48px}
+ .cards{grid-template-columns:1fr 1fr!important}
+ .stat-card{min-height:110px}
+ .course-card{display:flex;flex-wrap:wrap;gap:14px!important}
+ .course-info{min-width:0;flex:1}
+}
+@media(max-width:470px){.cards{grid-template-columns:1fr!important}.stat-card{min-height:auto}.hero h1{letter-spacing:-2.5px!important}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
