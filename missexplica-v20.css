@@ -1,0 +1,42 @@
+/* MissExplica V20 — consolidação e limpeza visual */
+:root{--mx20-green:#19b86f;--mx20-deep:#0d5b3d;--mx20-text:#13231c;--mx20-muted:#6f7e77;--mx20-bg:#f5f8f6;--mx20-line:#dde8e2}
+body{background:var(--mx20-bg);color:var(--mx20-text)}
+/* remove excesso visual causado por camadas anteriores */
+.sidebar,.topbar,.panel,.course-card,.quick-card,.stat-card,.materials,.lesson-sidebar{background-color:#fff!important}
+.panel,.course-card,.quick-card,.stat-card{box-shadow:0 5px 20px rgba(10,55,38,.045)!important}
+.panel,.course-card,.quick-card,.stat-card,.materials,.lesson-sidebar{border-color:var(--mx20-line)!important}
+/* hierarquia */
+h1,h2,h3,h4{color:var(--mx20-text)}
+.breadcrumb,.muted,.course-info span,.course-info small{color:var(--mx20-muted)!important}
+.topbar h2{letter-spacing:-.45px!important}
+.page-content{padding-top:24px!important}
+/* navegação */
+.nav-btn{border:1px solid transparent!important;transition:background .16s ease,border-color .16s ease,color .16s ease!important}
+.nav-btn:hover{background:#f0f8f4!important;border-color:#d5ebe0!important}
+.nav-btn.active{background:#eaf8f1!important;color:var(--mx20-deep)!important}
+/* curso */
+.course-card{min-width:0!important;overflow:hidden!important}
+.course-info{min-width:0!important}
+.course-info strong{overflow-wrap:anywhere;word-break:break-word!important}
+.course-cover{flex:0 0 auto!important}
+/* ações */
+button,.action,.green-btn,.primary-btn{min-height:42px!important;border-radius:11px!important}
+button:focus-visible,.action:focus-visible,.nav-btn:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid rgba(25,184,111,.25)!important;outline-offset:2px!important}
+/* progresso */
+.progress{background:#e7efe9!important}
+.progress i{background:var(--mx20-green)!important;box-shadow:none!important}
+/* alertas e badges */
+.badge,.tag,.status{border-radius:999px!important;font-weight:800!important;padding:.32rem .62rem!important}
+/* sala de aula */
+.video-placeholder{background:#0e2d21!important;box-shadow:0 10px 28px rgba(5,32,21,.12)!important}
+.video-play{box-shadow:0 10px 22px rgba(0,0,0,.16)!important}
+/* tabelas */
+.table th{font-weight:800!important}
+.table td{background:#fff!important}
+/* carregamento */
+.skeleton,.loading-skeleton{background:linear-gradient(90deg,#edf3ef 25%,#f8fbf9 37%,#edf3ef 63%)!important;background-size:400% 100%!important;animation:mx20Shimmer 1.4s ease infinite!important}
+@keyframes mx20Shimmer{0%{background-position:100% 0}100%{background-position:-100% 0}}
+/* mobile */
+@media(max-width:850px){.sidebar{box-shadow:0 2px 12px rgba(10,55,38,.05)!important}.topbar{box-shadow:0 2px 12px rgba(10,55,38,.045)!important}.page-content{padding-left:12px!important;padding-right:12px!important}.nav-btn{min-height:44px!important}.course-card{padding:13px!important}}
+@media(max-width:520px){.welcome h1{font-size:24px!important}.welcome p{font-size:13px!important}.panel{padding:16px!important}.stat-card{padding:16px!important}.quick-card{padding:16px!important}.video-placeholder{min-height:205px!important;height:205px!important}.video-play{width:62px!important;height:62px!important}}
+@media(prefers-reduced-motion:reduce){.skeleton,.loading-skeleton{animation:none!important}.nav-btn,.action{transition:none!important}}
