@@ -6,26 +6,54 @@ body{background:#f4f8f6}
 .green-btn:hover,.primary-btn:hover{transform:translateY(-2px);filter:saturate(1.08);box-shadow:0 14px 28px rgba(34,181,115,.24)!important}
 .course-showcase article,.benefit,.panel,.stat-card,.course-card,.quick-card{transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
 .course-showcase article:hover,.benefit:hover,.panel:hover,.stat-card:hover,.course-card:hover,.quick-card:hover{transform:translateY(-3px);border-color:#bfe2d0;box-shadow:0 16px 35px rgba(15,45,33,.09)}
-.stat-card{position:relative;overflow:hidden}
-.stat-card:after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;right:-45px;top:-45px;background:var(--mx-soft)}
-.stat-card strong{position:relative;z-index:1}
+.stat-card{position:relative;overflow:hidden}.stat-card:after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;right:-45px;top:-45px;background:var(--mx-soft)}.stat-card strong{position:relative;z-index:1}
 .role-banner{border:1px solid #cfe8da!important;background:linear-gradient(135deg,#fff,#effaf4)!important;border-radius:18px!important;box-shadow:0 10px 25px rgba(15,45,33,.05)}
-.nav-btn{transition:all .18s ease;border-radius:12px!important}
-.nav-btn:hover{background:#eef9f3!important;color:#148653!important;transform:translateX(2px)}
-.nav-btn.active{background:linear-gradient(135deg,#e8f8ef,#f5fcf8)!important;color:#087846!important;box-shadow:inset 3px 0 0 #22b573}
+.nav-btn{transition:all .18s ease;border-radius:12px!important}.nav-btn:hover{background:#eef9f3!important;color:#148653!important;transform:translateX(2px)}.nav-btn.active{background:linear-gradient(135deg,#e8f8ef,#f5fcf8)!important;color:#087846!important;box-shadow:inset 3px 0 0 #22b573}
 .topbar{box-shadow:0 4px 18px rgba(15,45,33,.04)}
 .course-cover{background:linear-gradient(135deg,#0e7e4c,#29c27d)!important;box-shadow:0 8px 18px rgba(34,181,115,.18)}
-.progress{height:9px!important;background:#e3eee8!important;border-radius:99px!important;overflow:hidden}
-.progress i{background:linear-gradient(90deg,#15945a,#2dcc83)!important;border-radius:99px}
-.action{transition:all .18s ease}
-.action:hover{transform:translateY(-1px);border-color:#a9d9bf!important;background:#f0faf5!important}
+.progress{height:9px!important;background:#e3eee8!important;border-radius:99px!important;overflow:hidden}.progress i{background:linear-gradient(90deg,#15945a,#2dcc83)!important;border-radius:99px}
+.action{transition:all .18s ease}.action:hover{transform:translateY(-1px);border-color:#a9d9bf!important;background:#f0faf5!important}
 .video-placeholder{border-radius:20px!important;background:radial-gradient(circle at 50% 35%,#214f3d,#0b2118 70%)!important;box-shadow:0 18px 40px rgba(4,25,16,.18)}
-.video-play{transition:transform .2s ease,box-shadow .2s ease}
-.video-placeholder:hover .video-play{transform:scale(1.08);box-shadow:0 12px 28px rgba(34,181,115,.28)}
-.lesson-item{transition:background .18s ease,transform .18s ease}
-.lesson-item:hover{transform:translateX(2px);background:#f1faf5!important}
-.login-card{box-shadow:0 22px 65px rgba(15,45,33,.12)!important}
-.login-card input:focus,.login-card select:focus,.login-card textarea:focus{border-color:#62c797!important;box-shadow:0 0 0 4px rgba(34,181,115,.1);outline:none}
+.video-play{transition:transform .2s ease,box-shadow .2s ease}.video-placeholder:hover .video-play{transform:scale(1.08);box-shadow:0 12px 28px rgba(34,181,115,.28)}
+.lesson-item{transition:background .18s ease,transform .18s ease}.lesson-item:hover{transform:translateX(2px);background:#f1faf5!important}
+.login-card{box-shadow:0 22px 65px rgba(15,45,33,.12)!important}.login-card input:focus,.login-card select:focus,.login-card textarea:focus{border-color:#62c797!important;box-shadow:0 0 0 4px rgba(34,181,115,.1);outline:none}
 .table tr{transition:background .15s ease}.table tr:hover{background:#f5faf7}
-@media(max-width:720px){.stat-card:hover,.course-card:hover,.panel:hover{transform:none}.landing-header{box-shadow:0 4px 15px rgba(15,45,33,.07)}.page-content{padding-bottom:90px!important}.quick-grid{gap:10px}.quick-card{padding:16px!important}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+/* V7+ — UX, responsividade e estados */
+.page-content{scroll-behavior:smooth}
+.page-content>*{animation:mxFadeUp .28s ease both}
+@keyframes mxFadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+button:active{transform:scale(.98)!important}
+.nav-btn b{display:inline-grid;place-items:center;width:24px;margin-right:4px;font-size:15px;opacity:.9}
+.nav-btn span{vertical-align:middle}
+.sidebar{overflow-y:auto;scrollbar-width:thin;scrollbar-color:#cfe4d8 transparent}
+.sidebar::-webkit-scrollbar,.table::-webkit-scrollbar{width:7px;height:7px}.sidebar::-webkit-scrollbar-thumb,.table::-webkit-scrollbar-thumb{background:#cfe4d8;border-radius:99px}
+.avatar{box-shadow:0 6px 14px rgba(34,181,115,.12)!important}
+.course-card .action{white-space:nowrap}
+.course-info{min-width:0}.course-info strong,.course-info span,.course-info small{overflow:hidden;text-overflow:ellipsis}
+.material-item{transition:background .18s ease,border-color .18s ease,transform .18s ease}.material-item:hover{background:#f5fbf7!important;border-color:#c7e5d4!important;transform:translateY(-1px)}
+.demo-box{border:1px solid #cbe7d8;background:#f2fbf6;border-radius:13px;padding:12px;color:#216c49;font-size:12px;margin-top:12px}
+.empty{border:1px dashed #cfe0d7!important;background:#f9fcfa!important;border-radius:15px!important;color:#74837d!important;padding:28px!important;text-align:center}
+.status,.badge,.chip{border-radius:999px}
+
+/* Mobile bottom navigation feel */
+@media(max-width:720px){
+  .platform{min-height:100dvh}
+  .sidebar{border-right:0;border-bottom:1px solid #dfeae4;box-shadow:0 8px 18px rgba(15,45,33,.05)!important}
+  .sidebar nav{padding-bottom:2px}
+  .nav-btn{font-size:11px!important}
+  .nav-btn b{width:auto;margin-right:5px}
+  .topbar{position:sticky;top:0;z-index:18}
+  .top-actions{gap:8px}
+  .page-content{padding-top:16px!important}
+  .welcome{position:relative;overflow:hidden}
+  .welcome:after{content:"";position:absolute;width:150px;height:150px;right:-70px;bottom:-85px;border-radius:50%;background:rgba(34,181,115,.08)}
+  .cards .stat-card{min-height:92px;display:flex;flex-direction:column;justify-content:center}
+  .course-card{gap:10px!important}
+  .course-card .course-info{flex:1 1 140px}
+  .course-card .action{margin-left:auto}
+  .lesson-title{gap:14px;display:flex;flex-direction:column;align-items:stretch}
+  .lesson-title .green-btn{width:100%}
+}
+@media(min-width:721px){.sidebar{scrollbar-gutter:stable}.course-card{min-height:88px}.quick-card{min-height:120px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}.page-content>*{animation:none!important}}
