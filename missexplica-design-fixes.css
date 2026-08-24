@@ -1,0 +1,87 @@
+/* MissExplica — design bug fixes
+ * Focus: overflow, responsive layout, typography, controls and AVA stability.
+ */
+
+*,*::before,*::after{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
+img,video,iframe,svg,canvas{max-width:100%;height:auto}
+button,input,textarea,select{max-width:100%}
+button{min-width:0}
+
+/* AVA containers */
+.platform,.main-content,.page-content,#pageContent{min-width:0}
+.page-content{overflow-wrap:anywhere}
+.panel,.course-card,.stat-card,.quick-card,.notice,.course-room,.lesson-title,.materials,.role-banner{min-width:0}
+.course-card{overflow:hidden}
+.course-info{min-width:0;overflow-wrap:anywhere}
+.course-info strong,.course-info span,.course-info small{overflow-wrap:anywhere;word-break:break-word}
+
+/* Forms */
+.platform input,.platform textarea,.platform select{width:100%;max-width:100%;min-width:0}
+.platform .input-row{min-width:0}
+
+/* Tables */
+.table-wrap,.panel .table-wrap{width:100%;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.table{width:100%;min-width:560px}
+
+/* Video / lesson area */
+.video-placeholder,.video-frame,.course-room iframe{width:100%;max-width:100%}
+.video-placeholder{overflow:hidden}
+.course-room-head,.welcome,.panel-head{min-width:0;gap:12px}
+.course-room-head>* , .welcome>* , .panel-head>*{min-width:0}
+
+/* Buttons should not force horizontal overflow */
+.course-room .green-btn,.welcome .green-btn,.panel .green-btn{white-space:normal}
+.quick-grid,.cards,.grid{min-width:0}
+
+/* Mobile navigation */
+@media(max-width:720px){
+  .sidebar{overflow:visible}
+  .sidebar nav{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none}
+  .sidebar nav::-webkit-scrollbar{display:none}
+  .nav-btn{white-space:nowrap;flex:0 0 auto}
+  .sidebar-footer{position:static;margin-top:8px}
+  .topbar{gap:10px;min-width:0}
+  .topbar>*{min-width:0}
+  .page-content{overflow-x:hidden}
+
+  .welcome .action,.welcome .green-btn{width:100%}
+  .course-card{display:grid;grid-template-columns:58px minmax(0,1fr);gap:12px}
+  .course-card>.action,.course-card>.green-btn{grid-column:1 / -1;width:100%;margin:0}
+  .course-cover{width:58px;min-width:58px}
+  .course-info{width:auto}
+
+  .cards{grid-template-columns:1fr 1fr}
+  .stat-card{min-width:0}
+  .stat-card strong{font-size:clamp(20px,7vw,28px)}
+
+  .lesson-sidebar{overflow:hidden}
+  .lesson-item{width:100%;max-width:100%}
+
+  .material-item{min-width:0}
+  .material-item div{min-width:0}
+  .material-item strong,.material-item small{overflow-wrap:anywhere}
+
+  .course-room-head h1{font-size:clamp(22px,6vw,30px);overflow-wrap:anywhere}
+  .video-placeholder{min-height:180px;height:auto;aspect-ratio:16 / 9}
+
+  .login-card{width:100%;max-width:450px}
+}
+
+@media(max-width:420px){
+  .cards{grid-template-columns:1fr}
+  .page-content{padding-left:12px!important;padding-right:12px!important}
+  .topbar{padding-left:12px!important;padding-right:12px!important}
+  .sidebar{padding-left:8px!important;padding-right:8px!important}
+  .hero h1{font-size:clamp(34px,11vw,42px)!important}
+  .visual-card{width:100%!important}
+}
+
+/* Accessibility / interaction fixes */
+:focus-visible{outline:3px solid rgba(24,169,87,.45)!important;outline-offset:3px}
+[disabled],[aria-disabled="true"]{cursor:not-allowed!important;opacity:.62}
+
+/* Prevent floating local notifications from creating horizontal scroll */
+[id^="mx"][style*="position: fixed"]{max-width:calc(100vw - 24px)!important}
+
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
