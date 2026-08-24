@@ -1,0 +1,21 @@
+/* MissExplica — desktop productivity controls */
+@media (min-width: 900px){
+  .topbar{position:sticky;top:0;z-index:30}
+  .topbar .mx-desktop-search{display:flex;align-items:center;gap:8px;min-width:280px;max-width:520px;flex:1}
+  .topbar .mx-desktop-search input{width:100%;height:40px;padding:0 13px;border:1px solid #dbe6e0;border-radius:10px;background:#fbfdfc;outline:none}
+  .topbar .mx-desktop-search input:focus{border-color:#18a957;box-shadow:0 0 0 3px rgba(24,169,87,.10)}
+  .mx-shortcut-help{display:inline-flex;align-items:center;gap:5px;color:#6d7b74;font-size:10px;font-weight:700;white-space:nowrap}
+  .mx-shortcut-help kbd{padding:3px 6px;border:1px solid #d8e2dd;border-bottom-width:2px;border-radius:5px;background:#fff;font:700 10px/1 system-ui}
+  .page-content{scroll-behavior:smooth}
+  .page-content .panel,.page-content .course-card,.page-content .stat-card{contain:layout paint}
+  .table tbody tr{transition:background .15s ease}
+  .table tbody tr:hover{background:#f5faf7}
+  .nav-btn{user-select:none}
+}
+@media (min-width: 1200px){
+  .topbar .mx-desktop-search{min-width:360px}
+}
+@media (min-width: 1600px){
+  .topbar .mx-desktop-search{max-width:680px}
+}
+@media (max-width: 899px){.mx-desktop-search,.mx-shortcut-help{display:none!important}}
