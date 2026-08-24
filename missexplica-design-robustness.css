@@ -1,0 +1,193 @@
+/* MissExplica — Design Robustness Layer
+   Focus: visibility, stacking, clickability, clipping and desktop stability. */
+
+/* Keep decorative layers from covering real content. */
+.landing-header::before,
+.landing-header::after,
+.hero::before,
+.hero::after,
+.hero-visual::before,
+.hero-visual::after,
+.visual-card::before,
+.visual-card::after,
+.panel::before,
+.panel::after,
+.course-card::before,
+.course-card::after{
+  pointer-events:none!important;
+}
+
+/* Content always sits above decorative artwork inside its component. */
+.landing-header > *,
+.hero > *,
+.hero-actions > *,
+.visual-card > *,
+.floating-card,
+.panel > *,
+.course-card > *,
+.stat-card > *,
+.quick-card > *{
+  position:relative;
+  z-index:1;
+}
+
+/* Navigation and controls remain clickable. */
+.landing-header,
+.landing-nav,
+.landing-nav a,
+.header-login,
+.green-btn,
+.outline-btn,
+.hero-actions button,
+.hero-actions a,
+button,
+.action,
+.nav-btn{
+  pointer-events:auto!important;
+}
+
+/* Prevent inherited clipping from hiding control labels. */
+.landing-nav a,
+.header-login,
+.green-btn,
+.outline-btn,
+.nav-btn,
+.action{
+  overflow:visible!important;
+  text-overflow:clip!important;
+}
+
+/* Stable inline sizing: long labels may wrap only where intended. */
+.header-login,
+.landing-nav a,
+.nav-btn,
+.action{
+  min-width:0;
+  max-width:100%;
+}
+
+/* Keep header controls visually above sticky content. */
+.landing-header{position:sticky!important;z-index:200!important}
+.landing-nav{position:relative;z-index:201!important}
+.landing-header .header-login{position:relative!important;z-index:202!important}
+
+/* Desktop header: prevent links from collapsing under the action button. */
+@media(min-width:1100px){
+  .landing-header{min-width:0!important}
+  .landing-header .site-logo{flex:0 0 auto!important}
+  .landing-header .landing-nav{flex:0 1 auto!important;min-width:0!important}
+  .landing-header .header-login{flex:0 0 220px!important}
+}
+
+/* Safe grids: children cannot force the parent wider than the viewport. */
+.course-showcase,
+.course-list,
+.cards,
+.quick-grid,
+.grid,
+.form-grid,
+.benefit-grid,
+.steps{
+  min-width:0!important;
+}
+.course-showcase > *,
+.course-list > *,
+.cards > *,
+.quick-grid > *,
+.grid > *,
+.form-grid > *,
+.benefit-grid > *,
+.steps > *{
+  min-width:0!important;
+}
+
+/* Text containers should shrink before causing overflow. */
+.course-showcase h3,
+.course-showcase p,
+.panel h1,.panel h2,.panel h3,.panel h4,.panel p,
+.course-card strong,.course-card span,.course-card small,
+.stat-card strong,.stat-card span,
+.quick-card strong,.quick-card span,
+.lesson-title,
+.material-item strong,.material-item small{
+  min-width:0!important;
+  max-width:100%!important;
+  overflow-wrap:anywhere!important;
+  word-break:normal!important;
+}
+
+/* Media never creates a horizontal scrollbar. */
+.visual-card,
+.visual-card img,
+.course-room,
+.course-room iframe,
+.video-placeholder,
+.video-frame,
+.panel img,
+.panel video,
+.panel iframe{
+  max-width:100%!important;
+}
+
+/* Tables stay inside their containers. */
+.table-wrap{
+  min-width:0!important;
+  max-width:100%!important;
+  overflow:auto!important;
+}
+.table-wrap table,
+.table-wrap .table{
+  margin:0!important;
+}
+
+/* Dialogs and overlays must remain above page content and inside the viewport. */
+.modal,
+.dialog,
+[role="dialog"],
+.command-palette,
+.commandbar,
+[class*="command-palette"],
+[class*="commandbar"]{
+  position:fixed;
+  z-index:10000!important;
+  max-width:calc(100vw - 32px)!important;
+  max-height:calc(100vh - 32px)!important;
+}
+
+/* Avoid accidental transparent text in common interactive states. */
+button:not(.hidden):not([hidden]),
+a:not(.hidden):not([hidden]),
+input:not(.hidden):not([hidden]),
+select:not(.hidden):not([hidden]),
+textarea:not(.hidden):not([hidden]){
+  -webkit-text-fill-color:currentColor;
+}
+
+/* Focus ring stays visible without shifting layout. */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible{
+  outline:3px solid rgba(32,199,122,.35)!important;
+  outline-offset:2px!important;
+}
+
+/* Do not let hover transforms create gaps or collisions. */
+@media(min-width:1100px){
+  .course-card:hover,
+  .course-showcase article:hover,
+  .stat-card:hover,
+  .quick-card:hover,
+  .benefit:hover{
+    transform:none!important;
+  }
+}
+
+/* Very narrow desktop windows: keep header usable before mobile breakpoint. */
+@media(min-width:721px) and (max-width:1099px){
+  .landing-header{gap:14px!important;padding-left:20px!important;padding-right:20px!important}
+  .landing-nav{gap:14px!important}
+  .landing-nav a{font-size:12px!important}
+  .landing-header .header-login{min-width:150px!important;padding-left:14px!important;padding-right:14px!important}
+}
