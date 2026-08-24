@@ -19,7 +19,7 @@ window.MISSEXPLICA_AUTH = {enabled:true,provider:'supabase'};
     'missexplica-v25.css?v=1','missexplica-v26.css?v=1','missexplica-v27.css?v=1','missexplica-v28.css?v=1',
     'missexplica-v29.css?v=1','missexplica-v30.css?v=1','missexplica-v31.css?v=1','missexplica-v32.css?v=1',
     'missexplica-v33.css?v=1','missexplica-v34.css?v=1','missexplica-v35.css?v=1','missexplica-v36.css?v=1',
-    'missexplica-design-fixes.css?v=1','missexplica-desktop.css?v=1'
+    'missexplica-design-fixes.css?v=1','missexplica-desktop.css?v=1','missexplica-desktop-productivity.css?v=1'
   ];
   styles.forEach(function(href){
     if(document.querySelector('link[href="'+href+'"]')) return;
