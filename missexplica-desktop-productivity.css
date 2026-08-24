@@ -1,0 +1,49 @@
+/* MissExplica — desktop productivity layer */
+@media (min-width: 1100px){
+  .platform{min-width:1100px}
+  .sidebar{width:270px;flex-basis:270px;padding:24px 16px}
+  .main-content{min-width:0}
+  .topbar{height:76px;padding:0 30px;gap:18px}
+  .page-content{padding:30px 34px 48px;max-width:none}
+  .page-content > *{max-width:1480px}
+  .welcome{align-items:center;gap:24px;margin-bottom:24px}
+  .welcome > div:first-child{min-width:0}
+  .welcome h1{letter-spacing:-.7px}
+  .grid{grid-template-columns:minmax(0,1.45fr) minmax(300px,.75fr);gap:18px}
+  .cards{grid-template-columns:repeat(4,minmax(150px,1fr));gap:14px}
+  .course-list{grid-template-columns:repeat(3,minmax(280px,1fr));gap:16px}
+  .course-card{min-height:150px;padding:17px}
+  .course-info{min-width:0}
+  .course-info strong,.course-info span,.course-info small{overflow-wrap:anywhere}
+  .quick-grid{grid-template-columns:repeat(3,minmax(170px,1fr));gap:12px}
+  .panel{padding:22px}
+  .panel-head{gap:14px}
+  .table{width:100%;table-layout:auto}
+  .table th,.table td{padding:11px 13px;vertical-align:middle}
+  .table th{position:sticky;top:0;z-index:2;background:#fff}
+  .course-room{grid-template-columns:minmax(0,1fr) 330px;gap:22px}
+  .lesson-sidebar{max-height:calc(100vh - 110px);overflow:auto;position:sticky;top:92px}
+  .lesson-item{padding:12px 10px}
+  .video-placeholder{min-height:500px}
+  .materials,.lesson-title{padding:24px}
+  .form-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .form-grid .full{grid-column:1/-1}
+  input,select,textarea{font-size:13px}
+  .action,.green-btn,.outline-btn,.header-login{min-height:42px}
+  .sidebar nav{display:grid;gap:6px}
+  .nav-btn{justify-content:flex-start;padding:11px 12px}
+}
+@media (min-width: 1440px){
+  .sidebar{width:285px;flex-basis:285px}
+  .page-content{padding-left:42px;padding-right:42px}
+  .course-list{grid-template-columns:repeat(4,minmax(250px,1fr))}
+  .video-placeholder{min-height:560px}
+}
+
+/* Productivity shortcuts hint */
+.mx-desktop-hint{display:inline-flex;align-items:center;gap:6px;color:#6b7a73;font-size:10px;font-weight:700}
+.mx-desktop-hint kbd{padding:3px 6px;border:1px solid #d8e4dd;border-bottom-width:2px;border-radius:5px;background:#fff;font:700 10px/1 system-ui}
+
+@media (prefers-reduced-motion: reduce){
+  .stat-card:hover,.course-card:hover,.panel:hover,.quick-card:hover{transform:none!important}
+}
