@@ -1,0 +1,62 @@
+/* MissExplica — desktop interaction and stacking bug fixes */
+@media (min-width: 721px){
+  /* Keep desktop navigation and actions above decorative layers. */
+  .landing-header{position:sticky;z-index:1000!important}
+  .landing-header .landing-nav,
+  .landing-header .header-login{position:relative;z-index:1001!important}
+
+  /* Stable keyboard focus without changing layout size. */
+  button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+    outline:3px solid rgba(34,181,115,.32)!important;
+    outline-offset:3px!important;
+  }
+
+  /* Command palette / dialogs stay above header, cards and decorative artwork. */
+  [role="dialog"],.modal,.dialog,.command-palette,.commandbar,.command-overlay{
+    z-index:2000!important;
+  }
+
+  /* Prevent decorative hero layers from catching mouse clicks. */
+  .hero-visual:before,.hero-visual:after,.visual-card:before,.visual-card:after,
+  .floating-card:before,.floating-card:after{pointer-events:none!important}
+
+  /* Clickable controls retain a predictable cursor even when nested in styled cards. */
+  button:not([disabled]),a[href],.nav-btn,.action,.green-btn,.outline-btn,.header-login{
+    cursor:pointer!important;
+  }
+
+  /* Avoid accidental text selection on primary controls. */
+  button,.nav-btn,.action,.green-btn,.outline-btn,.header-login{user-select:none!important}
+
+  /* Do not let long labels force topbar or card overflow. */
+  .topbar,.panel-head,.course-room-head,.welcome{min-width:0!important}
+  .topbar>* ,.panel-head>* ,.course-room-head>* ,.welcome>*{min-width:0!important}
+
+  /* Search fields can shrink instead of pushing adjacent actions off-screen. */
+  .topbar input,.topbar .search,.topbar .search-box,.topbar form{min-width:0!important;max-width:100%!important}
+
+  /* Sticky desktop navigation must not cover scrolled content. */
+  .sidebar{z-index:40!important}
+  .main-content,.page-content{position:relative;z-index:1!important}
+}
+
+@media (min-width: 1100px){
+  .landing-header{min-width:0!important}
+  .landing-nav{min-width:0!important;overflow:visible!important}
+
+  /* Keep desktop header actions visible when the window gets narrower. */
+  .landing-header .site-logo{flex:0 0 auto!important}
+  .landing-header .landing-nav{flex:0 1 auto!important}
+  .landing-header .header-login{flex:0 0 220px!important}
+}
+
+@media (min-width: 721px) and (max-width: 1199px){
+  .landing-header{gap:16px!important;padding-left:24px!important;padding-right:24px!important}
+  .landing-header .landing-nav{gap:16px!important}
+  .landing-header .header-login{min-width:176px!important;width:auto!important;height:44px!important;padding:0 15px!important;font-size:12px!important}
+}
+
+@media (min-width: 721px){
+  /* Safe truncation only where a single line is intentional. */
+  .topbar .breadcrumb,.topbar .page-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+}
