@@ -8,8 +8,6 @@ window.MISSEXPLICA_SUPABASE = {
 window.MISSEXPLICA_AUTH = {enabled:true,provider:'supabase'};
 
 // MissExplica — Phase 1 architecture entry point.
-// CSS legado continua preservado por compatibilidade; a execução JS agora
-// passa por um único núcleo para evitar carregamentos duplicados.
 (function(){
   var styles = [
     'ui-polish.css?v=2',
@@ -20,7 +18,8 @@ window.MISSEXPLICA_AUTH = {enabled:true,provider:'supabase'};
     'missexplica-v21.css?v=1','missexplica-v22.css?v=1','missexplica-v23.css?v=1','missexplica-v24.css?v=1',
     'missexplica-v25.css?v=1','missexplica-v26.css?v=1','missexplica-v27.css?v=1','missexplica-v28.css?v=1',
     'missexplica-v29.css?v=1','missexplica-v30.css?v=1','missexplica-v31.css?v=1','missexplica-v32.css?v=1',
-    'missexplica-v33.css?v=1','missexplica-v34.css?v=1','missexplica-v35.css?v=1','missexplica-v36.css?v=1'
+    'missexplica-v33.css?v=1','missexplica-v34.css?v=1','missexplica-v35.css?v=1','missexplica-v36.css?v=1',
+    'missexplica-design-fixes.css?v=1'
   ];
   styles.forEach(function(href){
     if(document.querySelector('link[href="'+href+'"]')) return;
