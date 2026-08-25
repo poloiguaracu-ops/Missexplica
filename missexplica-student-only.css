@@ -1,11 +1,75 @@
 /* MissExplica — student-only interface */
 #landingScreen{display:none!important}
 
-/* Student-only presentation: never expose staff navigation in this mode. */
-body.missexplica-student-only .role-banner:has(.role-icon),
+/* Keep the student AVA visible and readable. */
+body.missexplica-student-only{
+  background:#f4f8f6!important;
+  color:#17212b!important;
+}
+body.missexplica-student-only .login-screen{
+  min-height:100vh!important;
+  background:linear-gradient(135deg,#f7fbf9,#ffffff)!important;
+  color:#17212b!important;
+}
+body.missexplica-student-only .login-card{
+  background:#ffffff!important;
+  color:#17212b!important;
+  border-color:#dfe9e4!important;
+}
+body.missexplica-student-only .platform{
+  display:flex!important;
+  min-height:100vh!important;
+  background:#f4f8f6!important;
+}
+body.missexplica-student-only .sidebar{
+  min-height:100vh!important;
+  background:#ffffff!important;
+  color:#17212b!important;
+}
+body.missexplica-student-only .main-content{
+  background:#f4f8f6!important;
+  color:#17212b!important;
+}
+body.missexplica-student-only .topbar{
+  background:#ffffff!important;
+  color:#17212b!important;
+}
+body.missexplica-student-only .page-content{
+  background:#f4f8f6!important;
+  color:#17212b!important;
+}
+
+/* Preserve the student's own role banner; only staff-specific content should be hidden. */
 body.missexplica-student-only [data-role="teacher"],
 body.missexplica-student-only [data-role="manager"]{display:none!important}
 
-/* Keep the student workspace full-width and focused. */
-body.missexplica-student-only .platform{min-height:100vh!important}
-body.missexplica-student-only .sidebar{min-height:100vh}
+/* Cards/panels remain visually distinct from the page background. */
+body.missexplica-student-only .panel,
+body.missexplica-student-only .stat-card,
+body.missexplica-student-only .course-card,
+body.missexplica-student-only .quick-card,
+body.missexplica-student-only .welcome,
+body.missexplica-student-only .role-banner{
+  background:#ffffff!important;
+  color:#17212b!important;
+  border-color:#dfe9e4!important;
+}
+
+/* Student navigation stays visible and readable. */
+body.missexplica-student-only .nav-btn,
+body.missexplica-student-only .nav-btn span,
+body.missexplica-student-only .nav-btn b{
+  color:#52645c!important;
+  opacity:1!important;
+  visibility:visible!important;
+}
+body.missexplica-student-only .nav-btn.active,
+body.missexplica-student-only .nav-btn.active span,
+body.missexplica-student-only .nav-btn.active b{
+  color:#087247!important;
+}
+
+@media(max-width:720px){
+  body.missexplica-student-only .platform{display:block!important}
+  body.missexplica-student-only .sidebar{min-height:auto!important}
+}
