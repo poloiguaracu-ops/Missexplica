@@ -1,0 +1,11 @@
+/* MissExplica — student-only interface */
+#landingScreen{display:none!important}
+
+/* Student-only presentation: never expose staff navigation in this mode. */
+body.missexplica-student-only .role-banner:has(.role-icon),
+body.missexplica-student-only [data-role="teacher"],
+body.missexplica-student-only [data-role="manager"]{display:none!important}
+
+/* Keep the student workspace full-width and focused. */
+body.missexplica-student-only .platform{min-height:100vh!important}
+body.missexplica-student-only .sidebar{min-height:100vh}
