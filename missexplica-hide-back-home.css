@@ -1,0 +1,8 @@
+/* MissExplica — remove obsolete return-to-landing control in student-only mode */
+#loginScreen .back-link,
+body.missexplica-student-only .back-link,
+body.missexplica-student-only [onclick="backLanding()"]{
+  display:none!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
