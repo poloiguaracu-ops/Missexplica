@@ -19,7 +19,7 @@ window.MISSEXPLICA_AUTH = {enabled:true,provider:'supabase'};
     'missexplica-v25.css?v=1','missexplica-v26.css?v=1','missexplica-v27.css?v=1','missexplica-v28.css?v=1',
     'missexplica-v29.css?v=1','missexplica-v30.css?v=1','missexplica-v31.css?v=1','missexplica-v32.css?v=1',
     'missexplica-v33.css?v=1','missexplica-v34.css?v=1','missexplica-v35.css?v=1','missexplica-v36.css?v=1',
-    'missexplica-design-fixes.css?v=1','missexplica-desktop.css?v=1','missexplica-desktop-productivity.css?v=1','missexplica-desktop-workspace.css?v=1','missexplica-desktop-controls.css?v=1','missexplica-desktop-workspace-v2.css?v=1','missexplica-desktop-commandbar.css?v=1','missexplica-desktop-bugfixes.css?v=1','missexplica-header-button-fix.css?v=1','missexplica-header-button-final.css?v=1','missexplica-ui-safety.css?v=1','missexplica-desktop-interaction-fixes.css?v=1','missexplica-design-robustness.css?v=1'
+    'missexplica-design-fixes.css?v=1','missexplica-desktop.css?v=1','missexplica-desktop-productivity.css?v=1','missexplica-desktop-workspace.css?v=1','missexplica-desktop-controls.css?v=1','missexplica-desktop-workspace-v2.css?v=1','missexplica-desktop-commandbar.css?v=1','missexplica-desktop-bugfixes.css?v=1','missexplica-header-button-fix.css?v=1','missexplica-header-button-final.css?v=1','missexplica-ui-safety.css?v=1','missexplica-desktop-interaction-fixes.css?v=1','missexplica-design-robustness.css?v=1','missexplica-student-only.css?v=1'
   ];
   styles.forEach(function(href){
     if(document.querySelector('link[href="'+href+'"]')) return;
@@ -48,4 +48,10 @@ window.MISSEXPLICA_AUTH = {enabled:true,provider:'supabase'};
   commandbar.defer=true;
   commandbar.dataset.missexplicaCore='1';
   document.head.appendChild(commandbar);
+
+  var studentOnly=document.createElement('script');
+  studentOnly.src='missexplica-student-only.js?v=1';
+  studentOnly.defer=true;
+  studentOnly.dataset.missexplicaCore='1';
+  document.head.appendChild(studentOnly);
 })();
