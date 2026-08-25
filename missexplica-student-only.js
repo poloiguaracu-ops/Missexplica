@@ -1,33 +1,36 @@
 /* MissExplica — Student Only Mode
-   Removes the public landing experience and exposes only the student flow. */
+   Public landing is disabled; unauthenticated users see the login,
+   authenticated users go directly to the student AVA. */
 (function () {
   'use strict';
 
   function qs(id) { return document.getElementById(id); }
 
-  function applyStudentMode() {
+  function isAuthenticated() {
+    try { return !!localStorage.getItem('missexplica_auth'); } catch (_) { return false; }
+  }
+
+  function showStudentFlow() {
     document.body.classList.add('missexplica-student-only');
 
-    // Student-only means the public landing page is never an active screen.
     var landing = qs('landingScreen');
-    if (landing) landing.remove();
+    var login = qs('loginScreen');
+    var platform = qs('platform');
 
-    // Never retain a staff role in this interface mode.
+    // Never remove structural screens here: legacy handlers may still need them.
+    // We only control which screen is visible.
+    if (landing) landing.classList.add('hidden');
+
     try { localStorage.setItem('missexplica_role', 'student'); } catch (_) {}
 
-    // Prefer the real app render function when it exists.
-    if (typeof window.render === 'function') {
-      window.render();
-      return;
+    if (isAuthenticated()) {
+      if (login) login.classList.add('hidden');
+      if (platform) platform.classList.remove('hidden');
+      if (typeof window.render === 'function') window.render();
+    } else {
+      if (platform) platform.classList.add('hidden');
+      if (login) login.classList.remove('hidden');
     }
-
-    var platform = qs('platform');
-    var login = qs('loginScreen');
-    var authenticated = false;
-    try { authenticated = !!localStorage.getItem('missexplica_auth'); } catch (_) {}
-
-    if (platform) platform.classList.toggle('hidden', !authenticated);
-    if (login) login.classList.toggle('hidden', authenticated);
   }
 
   function installRenderGuard() {
@@ -35,18 +38,25 @@
     var baseRender = window.render;
     window.render = function () {
       try { localStorage.setItem('missexplica_role', 'student'); } catch (_) {}
-      return baseRender.apply(this, arguments);
+      var result = baseRender.apply(this, arguments);
+      // The legacy renderer hides the platform when unauthenticated. In student-only
+      // mode that must mean "show login", never "show nothing".
+      if (!isAuthenticated()) {
+        var login = qs('loginScreen');
+        var platform = qs('platform');
+        if (platform) platform.classList.add('hidden');
+        if (login) login.classList.remove('hidden');
+      }
+      return result;
     };
     window.__missexplicaStudentRenderGuard = true;
   }
 
   function start() {
     installRenderGuard();
-    applyStudentMode();
-
-    // Re-assert after authentication callbacks or legacy navigation handlers.
-    window.setTimeout(applyStudentMode, 0);
-    window.setTimeout(applyStudentMode, 250);
+    showStudentFlow();
+    window.setTimeout(showStudentFlow, 0);
+    window.setTimeout(showStudentFlow, 250);
   }
 
   if (document.readyState === 'loading') {
